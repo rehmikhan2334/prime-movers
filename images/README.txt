@@ -19,3 +19,11 @@ Where they appear:
 
 To use online photo links instead, change IMG_DIR near the top of the script in index.html and keep the same file names, or edit photo() to return any URL you like.
 Use photos you own or that are licensed for commercial use.
+
+--- PEOPLE PHOTOS (faces and expressions) ---
+  crew.jpg      smiling movers team with boxes (About page story photo)
+  team1.jpg ... team4.jpg      square portraits for the About page team (Operations lead, Customer care, Crew chief, Logistics planner)
+  review1.jpg ... review6.jpg  square portraits of happy customers for the testimonials
+Square crop, at least 300x300. Use real photos of your own staff and customers (with permission) or licensed stock.
+Search ideas on Unsplash / Pexels: "movers carrying boxes smiling", "happy couple new home boxes", "delivery man portrait smiling", "customer service woman headset", "family moving day".
+Hero and banner photos are shown with a slow zoom for a lively feel.
