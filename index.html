@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Prime Movers: movers, packers and packing supplies shop in the UAE.">
+<title>Prime Movers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: multi-page hash-routed site. Navy hero/footer with illustrated skyline, kraft-orange accent, soft grey-blue pages. Shop pages share the same chrome. */
+:root{
+  --bg:#f4f6fa; --surface:#ffffff; --fg:#0e1a33; --muted:#566178; --line:#dce2ec; --soft:#e8edf5;
+  --accent:#f2a33a; --accent-fg:#1c1204; --accent-d:#d98618;
+  --hero:#0f2447; --hero-sky:#1d3a6b; --hero-fg:#ffffff; --hero-muted:#a9b8d4; --hero-line:#2a4574;
+  --sky:#dfe8f5; --a1:#0f2447; --a2:#f2a33a; --a3:#c9791a; --a5:#ffffff;
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --body:"Figtree","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --maxw:1240px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0a1224; --surface:#111c34; --fg:#e9eff9; --muted:#93a1bb; --line:#1f2d4a; --soft:#0f1a30;
+  --hero:#060d1d; --hero-sky:#10203f; --hero-line:#1c3055; --sky:#16284a; --a1:#0a1530; --a5:#dbe4f2; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0a1224; --surface:#111c34; --fg:#e9eff9; --muted:#93a1bb; --line:#1f2d4a; --soft:#0f1a30;
+  --hero:#060d1d; --hero-sky:#10203f; --hero-line:#1c3055; --sky:#16284a; --a1:#0a1530; --a5:#dbe4f2; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:70;background:var(--hero)}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.06;letter-spacing:-.02em;margin:0;text-wrap:balance}
+p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 22px;border-radius:12px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-fg);font-weight:600;font-size:15px;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-2px);background:var(--accent-d);border-color:var(--accent-d)}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--fg)}
+.btn.ghost:hover{background:var(--fg);color:var(--bg)}
+.btn.onhero{background:transparent;color:var(--hero-fg);border-color:var(--hero-fg)}
+.btn.onhero:hover{background:var(--hero-fg);color:var(--hero)}
+.btn.sm{padding:9px 14px;font-size:14px}
+svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.art{display:block;width:100%;height:100%}
+.pw{display:block;position:relative;width:100%;height:100%}
+.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.bgphoto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.28}
+
+/* top bar + header */
+.topbar{background:var(--hero);color:var(--hero-fg);font-size:13px;border-bottom:1px solid var(--hero-line)}
+.topbar .wrap{display:flex;gap:6px 24px;justify-content:space-between;flex-wrap:wrap;padding-block:9px}
+.topbar .c{display:flex;gap:4px 22px;flex-wrap:wrap;color:var(--hero-muted)}
+.topbar .c b{color:var(--hero-fg);font-weight:500}
+header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;background:color-mix(in srgb,var(--surface) 90%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:16px;min-height:68px;position:relative}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.03em}
+.logo i{width:34px;height:34px;border-radius:10px;background:var(--accent);color:var(--accent-fg);display:grid;place-items:center}
+.logo svg{width:20px;height:20px}
+.links{display:flex;gap:2px;margin-left:auto;align-items:center}
+.links a,.links>button{padding:9px 13px;border-radius:10px;font-size:15px;font-weight:500;background:none;border:0}
+.links a:hover,.links>button:hover,.links a.on,.links>button[aria-expanded="true"]{background:var(--soft)}
+.links a.on{color:var(--accent-d)}
+.theme{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--soft)}
+.theme button{width:30px;height:28px;border-radius:999px;border:0;background:none;display:grid;place-items:center;color:var(--muted)}
+.theme button svg{width:15px;height:15px}
+.theme button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.cartbtn{position:relative;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center}
+.cartbtn:hover{border-color:var(--accent)}
+.cartbtn b{position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;border-radius:10px;background:var(--accent);color:var(--accent-fg);font-size:11px;display:grid;place-items:center;padding:0 5px}
+.burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--surface);place-items:center}
+.right{display:flex;gap:10px;align-items:center}
+.mega{display:none;border-top:1px solid var(--line);background:var(--surface)}
+.mega.open{display:block}
+.mega .wrap{padding-block:20px}
+.mega-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px 18px}
+.mega-grid a{display:flex;gap:12px;align-items:center;padding:10px 12px;border-radius:10px;font-size:14.5px;font-weight:500}
+.mega-grid a:hover{background:var(--soft)}
+.mega-grid a svg{color:var(--accent-d)}
+.mobile-theme{display:none}
+@media (max-width:1040px){
+  .links{display:none;position:absolute;left:0;right:0;top:100%;background:var(--surface);flex-direction:column;align-items:stretch;padding:10px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--line);margin:0}
+  .links.open{display:flex}
+  .links a,.links>button{text-align:left;padding:13px 12px;font-size:17px}
+  .burger{display:grid}
+  .right{margin-left:auto}
+  .desktop-theme,.nav .cta{display:none}
+  .mobile-theme{display:flex;justify-content:space-between;align-items:center;padding:12px;font-size:14px;color:var(--muted)}
+  .mega-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:520px){.mega-grid{grid-template-columns:1fr}.topbar .c span:nth-child(n+3){display:none}}
+
+/* hero + page banners */
+.hero{background:var(--hero);color:var(--hero-fg);position:relative;overflow:hidden}
+.hero .scene{position:absolute;inset:0;opacity:1}
+.hero .scene svg{width:100%;height:100%;display:block}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;padding-block:72px 150px;align-items:start}
+.hero-copy{display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+.hero h1{font-size:clamp(42px,6.4vw,84px);font-weight:800}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lead{font-size:18px;color:var(--hero-muted);max-width:50ch}
+.hero .tag{font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.quote{background:var(--surface);color:var(--fg);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:14px;min-width:0;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.quote h2{font-size:26px}
+.quote .note{font-size:14px;color:var(--muted)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:flex;flex-direction:column;gap:6px;font-size:12px;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);min-width:0}
+input,select,textarea{font:inherit;font-size:15px;letter-spacing:0;text-transform:none;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 12px;width:100%;min-width:0}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+input.bad{border-color:#d1432f}
+textarea{resize:vertical;min-height:84px}
+.ok{display:none;padding:14px;border-radius:10px;background:var(--accent);color:var(--accent-fg);font-size:14.5px;font-weight:500}
+.ok.show{display:block}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;padding-block:44px 120px}}
+@media (max-width:460px){.row2{grid-template-columns:1fr}}
+.banner{background:var(--hero);color:var(--hero-fg);position:relative;overflow:hidden;border-bottom:4px solid var(--accent)}
+.banner .scene{position:absolute;inset:0}
+.banner .scene svg{width:100%;height:100%;display:block}
+.banner .wrap{position:relative;padding-block:64px 90px;display:flex;flex-direction:column;gap:14px}
+.banner h1{font-size:clamp(36px,5.4vw,66px);font-weight:800;max-width:18ch}
+.banner p{color:var(--hero-muted);max-width:56ch;font-size:17px}
+.crumb{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--hero-muted)}
+.crumb a{color:var(--accent)}
+
+/* stats */
+.stats{background:var(--surface);border-bottom:1px solid var(--line);margin-top:-1px}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.stat{padding:26px 20px;border-right:1px solid var(--line)}
+.stat:first-child{padding-left:0}.stat:last-child{border-right:0}
+.stat b{display:block;font-family:var(--display);font-size:clamp(30px,4vw,48px);font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--accent-d)}
+.stat span{font-size:14px;color:var(--muted)}
+@media (max-width:760px){.stats .wrap{grid-template-columns:1fr 1fr}.stat{border-bottom:1px solid var(--line)}.stat:nth-child(2n){border-right:0}.stat:nth-child(odd){padding-left:0}.stat:nth-child(n+3){border-bottom:0}}
+
+section{padding-block:88px}
+section.alt{background:var(--soft);border-block:1px solid var(--line)}
+.head{display:flex;flex-direction:column;gap:12px;margin-bottom:44px;max-width:760px}
+.head h2{font-size:clamp(32px,4.6vw,56px);font-weight:800}
+.head p{color:var(--muted);font-size:17px}
+.head.row{max-width:none;flex-direction:row;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+@media (max-width:700px){section{padding-block:60px}}
+
+.split{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:60px;align-items:center}
+.visual{position:relative;aspect-ratio:1/.82;border-radius:24px;overflow:hidden;border:1px solid var(--line);max-width:100%}
+.badge{position:absolute;right:14px;bottom:14px;background:var(--accent);color:var(--accent-fg);border-radius:16px;padding:12px 16px}
+.badge b{font-family:var(--display);font-size:32px;font-weight:800;display:block;line-height:1}
+.badge span{font-size:12.5px}
+.copy{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+.copy h2{font-size:clamp(30px,4vw,48px);font-weight:800}
+.copy p{color:var(--muted);font-size:17px}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+.checks li{display:flex;gap:12px;align-items:center;font-weight:500}
+.checks li i{width:24px;height:24px;border-radius:50%;background:var(--accent);color:var(--accent-fg);display:grid;place-items:center;flex:none}
+.checks svg{width:13px;height:13px;stroke-width:2.6}
+@media (max-width:860px){.split{grid-template-columns:1fr;gap:32px}}
+
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.feat{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:12px;transition:transform .2s,border-color .2s}
+.feat:hover{transform:translateY(-4px);border-color:var(--accent)}
+.feat .ic{width:46px;height:46px;border-radius:12px;background:var(--hero);color:var(--accent);display:grid;place-items:center}
+.feat h3{font-size:21px}
+.feat p{color:var(--muted);font-size:15.5px}
+@media (max-width:900px){.grid3{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.grid3{grid-template-columns:1fr}}
+
+/* service cards */
+.svc-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.svc{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,border-color .2s}
+.svc:hover{transform:translateY(-4px);border-color:var(--accent)}
+.svc .img{aspect-ratio:16/10;border-bottom:1px solid var(--line)}
+.svc .b{padding:18px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.svc h3{font-size:19px}
+.svc p{font-size:14.5px;color:var(--muted)}
+.svc .more{margin-top:auto;padding-top:6px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-d)}
+@media (max-width:1100px){.svc-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.svc-grid{grid-template-columns:1fr}}
+.center{display:flex;justify-content:center;margin-top:32px}
+
+/* shop */
+.shop-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.prod{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.prod .img{aspect-ratio:1/.8;border-bottom:1px solid var(--line);display:block}
+.prod .b{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.prod .cat{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.prod h3{font-size:18px;line-height:1.15}
+.prod:hover h3{text-decoration:underline;text-underline-offset:4px}
+.price{font-family:var(--display);font-size:22px;font-weight:800}
+.price small{font-family:var(--body);font-size:13px;font-weight:500;color:var(--muted)}
+.prod .foot{margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+@media (max-width:1100px){.shop-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.shop-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.prod .foot{flex-direction:column;align-items:stretch}}
+@media (max-width:400px){.shop-grid{grid-template-columns:1fr}}
+.toolbar{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:26px;align-items:center}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:14px;font-weight:500}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.toolbar select{width:auto}
+.pd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+.pd .pic{aspect-ratio:1/.85;border-radius:22px;overflow:hidden;border:1px solid var(--line)}
+.pd .info{display:flex;flex-direction:column;gap:18px}
+.pd h1{font-size:clamp(30px,4vw,46px);font-weight:800}
+.pd .price{font-size:34px;color:var(--accent-d)}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.qty button{width:40px;height:42px;border:0;background:none;font-size:20px}
+.qty span{min-width:34px;text-align:center;font-weight:600}
+.specs{border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden}
+.specs div{display:flex;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);font-size:15px}
+.specs div:last-child{border-bottom:0}
+.specs span{color:var(--muted)}
+.buyrow{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+@media (max-width:860px){.pd{grid-template-columns:1fr;gap:28px}}
+.cart-wrap{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:28px;align-items:start}
+.line-item{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:16px;align-items:center;padding:16px;background:var(--surface);border:1px solid var(--line);border-radius:16px;margin-bottom:12px}
+.line-item .th{width:96px;aspect-ratio:1/.85;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.line-item h3{font-size:17px}
+.line-item .rm{background:none;border:0;color:var(--muted);font-size:13px;text-decoration:underline;padding:4px 0}
+.line-item .r{text-align:right;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.summary{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:12px;position:sticky;top:96px}
+.summary h2{font-size:24px}
+.summary .ln{display:flex;justify-content:space-between;gap:12px;font-size:15px}
+.summary .ln span:first-child{color:var(--muted)}
+.summary .tot{border-top:1px solid var(--line);padding-top:14px;font-weight:700;font-size:18px}
+.summary .tot span:first-child{color:var(--fg)}
+.empty{text-align:center;padding:64px 16px;display:flex;flex-direction:column;gap:16px;align-items:center}
+.empty h2{font-size:30px}
+.empty p{color:var(--muted)}
+@media (max-width:900px){.cart-wrap{grid-template-columns:1fr}.summary{position:static}}
+@media (max-width:520px){.line-item{grid-template-columns:72px minmax(0,1fr)}.line-item .th{width:72px}.line-item .r{grid-column:1/-1;flex-direction:row;justify-content:space-between;align-items:center}}
+.pay{display:grid;gap:10px}
+.pay label{flex-direction:row;align-items:center;gap:12px;text-transform:none;letter-spacing:0;font-family:var(--body);font-size:15px;color:var(--fg);padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+.pay input{width:auto}
+.fcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.fcard h2{font-size:24px}
+
+/* coverage */
+.cover{background:var(--hero);color:var(--hero-fg);border:0}
+.cover .head p,.cover .eyebrow{color:var(--hero-muted)}
+.cover .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:52px;align-items:center}
+.cover .head{margin:0}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.pill{padding:10px 18px;border-radius:999px;border:1px solid var(--hero-line);background:none;color:var(--hero-fg);font-size:14.5px;font-weight:500}
+.pill[aria-pressed="true"]{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+.map{border:1px solid var(--hero-line);border-radius:22px;padding:26px;display:grid;gap:16px;background:color-mix(in srgb,var(--hero-sky) 40%,transparent)}
+.map h3{font-size:30px}
+.map p{color:var(--hero-muted)}
+.bar{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bar div{border:1px solid var(--hero-line);border-radius:14px;padding:14px}
+.bar b{font-family:var(--display);font-size:28px;font-weight:800;display:block;line-height:1.1;color:var(--accent)}
+.bar span{font-size:13px;color:var(--hero-muted)}
+@media (max-width:860px){.cover .wrap{grid-template-columns:1fr;gap:32px}}
+
+/* testimonials */
+.arrows{display:flex;gap:10px}
+.arrows button{width:46px;height:46px;border-radius:50%;border:1px solid var(--fg);background:none;display:grid;place-items:center}
+.arrows button:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+.track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.track::-webkit-scrollbar{display:none}
+.rev{flex:0 0 min(420px,86%);scroll-snap-align:start;border:1px solid var(--line);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:16px;background:var(--surface)}
+.stars{display:flex;gap:3px;color:var(--accent)}
+.stars svg{width:16px;height:16px;fill:currentColor;stroke:none}
+.rev p{font-size:16px}
+.who-r{display:flex;align-items:center;gap:12px;margin-top:auto}
+.av{width:42px;height:42px;border-radius:50%;background:var(--hero);color:var(--accent);display:grid;place-items:center;font-family:var(--display);font-weight:800;flex:none}
+.who-r b{display:block;font-size:15px}
+.who-r span{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:2px solid var(--fg)}
+.step{padding:24px 20px 6px 0;display:flex;flex-direction:column;gap:10px;position:relative}
+.step::before{content:"";position:absolute;top:-8px;left:0;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+section.alt .step::before{border-color:var(--soft)}
+.step .n{font-family:var(--mono);font-size:12.5px;color:var(--muted);padding-top:8px}
+.step h3{font-size:19px}
+.step p{font-size:14.5px;color:var(--muted)}
+@media (max-width:980px){.steps{grid-template-columns:1fr;border-top:0;border-left:2px solid var(--fg);padding-left:28px}.step{padding:0 0 28px}.step::before{top:4px;left:-37px}.step .n{padding-top:0}}
+
+/* faq */
+.faq-wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:52px}
+.faq-wrap .head{margin:0}
+details{border-bottom:1px solid var(--line)}
+details:first-of-type{border-top:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:19px 0;font-family:var(--display);font-size:19px;font-weight:600;letter-spacing:-.01em}
+summary::-webkit-details-marker{display:none}
+summary i{width:30px;height:30px;border-radius:50%;border:1px solid var(--fg);display:grid;place-items:center;flex:none;transition:transform .2s}
+details[open] summary i{transform:rotate(45deg);background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+details p{color:var(--muted);padding:0 40px 20px 0}
+@media (max-width:860px){.faq-wrap{grid-template-columns:1fr;gap:26px}}
+
+/* blog */
+.blog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.post{display:flex;flex-direction:column;gap:12px}
+.thumb{aspect-ratio:16/10;border-radius:18px;overflow:hidden;border:1px solid var(--line);max-width:100%}
+.post .date{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.post h3{font-size:21px;line-height:1.15}
+.post:hover h3{text-decoration:underline;text-underline-offset:5px}
+@media (max-width:900px){.blog-grid{grid-template-columns:1fr}}
+.article{max-width:760px;margin-inline:auto;display:flex;flex-direction:column;gap:20px}
+.article p{font-size:18px;color:var(--fg);line-height:1.7}
+.article h2{font-size:28px;margin-top:10px}
+
+/* detail layout */
+.detail{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:40px;align-items:start}
+.detail .main{display:flex;flex-direction:column;gap:26px;min-width:0}
+.detail .pic{aspect-ratio:16/8;border-radius:20px;overflow:hidden;border:1px solid var(--line)}
+.detail h2{font-size:30px}
+.detail p{color:var(--muted);font-size:17px}
+.side{display:flex;flex-direction:column;gap:16px;position:sticky;top:96px}
+@media (max-width:900px){.detail{grid-template-columns:1fr}.side{position:static}}
+.contact-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:28px}
+.cc{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.cc .ic{width:44px;height:44px;border-radius:12px;background:var(--hero);color:var(--accent);display:grid;place-items:center}
+.cc h3{font-size:18px}
+.cc p{color:var(--muted);font-size:15px}
+@media (max-width:800px){.contact-cards{grid-template-columns:1fr}}
+.team{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.member{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:10px}
+.member .av{width:56px;height:56px;font-size:20px}
+.member span{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:900px){.team{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.team{grid-template-columns:1fr}}
+.legal{max-width:760px;margin-inline:auto;display:flex;flex-direction:column;gap:16px}
+.legal h2{font-size:24px;margin-top:12px}
+.legal p{color:var(--muted)}
+
+/* cta + footer */
+.cta-band{background:var(--accent);color:var(--accent-fg)}
+.cta-band .wrap{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;padding-block:64px}
+.cta-band h2{font-size:clamp(32px,5vw,60px);font-weight:800;max-width:16ch}
+.cta-band p{margin-top:12px;max-width:46ch;font-size:17px}
+.cta-band .btn{background:var(--hero);color:var(--hero-fg);border-color:var(--hero)}
+.cta-band .btn:hover{background:var(--hero-sky)}
+footer{background:var(--hero);color:var(--hero-fg);position:relative;overflow:hidden}
+footer .sk{position:absolute;left:0;right:0;top:0;height:130px;pointer-events:none}
+footer .sk svg{width:100%;height:100%;display:block}
+footer .wrap{position:relative;padding-block:150px 28px}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:34px}
+.foot h4{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 16px;font-weight:500}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:15px;color:var(--hero-muted)}
+.foot a:hover{color:var(--hero-fg);text-decoration:underline;text-underline-offset:4px}
+.foot .about{color:var(--hero-muted);font-size:15px;margin-top:14px;max-width:36ch}
+.foot .soc{display:flex;gap:10px;margin-top:18px}
+.foot .soc a{width:40px;height:40px;border-radius:50%;border:1px solid var(--hero-line);display:grid;place-items:center;font-family:var(--mono);font-size:12px}
+.foot .soc a:hover{background:var(--accent);color:var(--accent-fg);border-color:var(--accent);text-decoration:none}
+.copyline{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:44px;padding-top:20px;border-top:1px solid var(--hero-line);font-size:13.5px;color:var(--hero-muted)}
+@media (max-width:900px){.foot{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.foot{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <div class="c"><span><b>sales@primemovers.demo</b></span><span><b>0500 000 001</b></span><span><b>0500 000 002</b></span><span>Toll free <b>800-0000</b></span></div>
+  <div class="c"><span>Dubai · Sharjah · Ajman · Abu Dhabi</span></div>
+</div></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#home" aria-label="Prime Movers home"><i id="logoI"></i>Prime Movers</a>
+    <nav class="links" id="links" aria-label="Main">
+      <a href="#home" data-nav="home">Home</a>
+      <a href="#about-us" data-nav="about-us">About Us</a>
+      <button id="svcBtn" aria-expanded="false" aria-controls="mega">Services <span id="chev"></span></button>
+      <a href="#shop" data-nav="shop">Shop</a>
+      <a href="#blogs" data-nav="blogs">Blogs</a>
+      <a href="#contact-us" data-nav="contact-us">Contact Us</a>
+      <div class="mobile-theme"><span>Theme</span><div class="theme" data-theme-switch></div></div>
+    </nav>
+    <div class="right">
+      <div class="theme desktop-theme" data-theme-switch></div>
+      <a class="cartbtn" href="#cart" aria-label="Open cart"><span id="cartI"></span><b id="cartN">0</b></a>
+      <a class="btn sm cta" href="#contact-us">Free quote</a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span id="burgI"></span></button>
+    </div>
+  </div>
+  <div class="mega" id="mega"><div class="wrap"><div class="mega-grid" id="megaGrid"></div></div></div>
+</header>
+
+<main id="app"></main>
+
+<footer>
+  <div class="sk" id="footSky"></div>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo" href="#home"><i id="logoF"></i>Prime Movers</a>
+        <p class="about">Trusted movers and packers across Dubai, Sharjah, Ajman and the wider UAE. Packing supplies delivered to your door.</p>
+        <div class="soc"><a href="#home" aria-label="Facebook">FB</a><a href="#home" aria-label="Instagram">IG</a><a href="#home" aria-label="LinkedIn">IN</a></div>
+      </div>
+      <div><h4>Quick links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about-us">About Us</a></li><li><a href="#services">Services</a></li><li><a href="#shop">Shop</a></li><li><a href="#blogs">Blogs</a></li><li><a href="#contact-us">Contact Us</a></li><li><a href="#privacy-policy">Privacy Policy</a></li><li><a href="#terms">Terms &amp; Conditions</a></li></ul></div>
+      <div><h4>Services</h4><ul id="footSvc"></ul></div>
+      <div><h4>Get in touch</h4><ul><li>0500 000 001<br>0500 000 002</li><li>Toll free 800-0000</li><li>sales@primemovers.demo</li><li>Dubai &amp; Sharjah, U.A.E</li></ul></div>
+    </div>
+    <div class="copyline"><span>© 2026 Prime Movers. All rights reserved.</span><span>Demo website with sample content, prices and contact details.</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+/* ---------- icons ---------- */
+var P={
+home:"M3 11l9-8 9 8M5 10v10h14V10M10 20v-6h4v6",
+building:"M4 21V4h10v17M14 9h6v12M8 8h2M8 12h2M8 16h2",
+box:"M21 8l-9-5-9 5v8l9 5 9-5zM3 8l9 5 9-5M12 13v8",
+truck:"M2 6h12v10H2zM14 9h4l4 4v3h-8M6 18h.01M18 18h.01",
+users:"M16 20v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2M9.5 10a3.5 3.5 0 100-7 3.5 3.5 0 000 7M21 20v-2a4 4 0 00-3-3.9M16 3.1a3.5 3.5 0 010 6.8",
+warehouse:"M3 21V9l9-5 9 5v12M7 21v-7h10v7",
+monitor:"M3 4h18v12H3zM8 20h8M12 16v4",
+music:"M9 18V5l12-2v13M6 21a3 3 0 100-6 3 3 0 000 6M18 19a3 3 0 100-6 3 3 0 000 6",
+frame:"M3 3h18v18H3zM7 7h10v10H7z",
+sofa:"M5 11V8a3 3 0 013-3h8a3 3 0 013 3v3M3 13a2 2 0 014 0v3h10v-3a2 2 0 014 0v5H3zM6 18v2M18 18v2",
+ball:"M12 21a9 9 0 100-18 9 9 0 000 18M12 14a2 2 0 100-4 2 2 0 000 4",
+store:"M3 9l2-5h14l2 5M3 9v11h18V9M3 9a3 3 0 006 0 3 3 0 006 0 3 3 0 006 0M10 20v-5h4v5",
+hotel:"M3 20V7M3 14h18v6M21 14v-3a3 3 0 00-3-3h-7v6M7 11a1.5 1.5 0 100-3 1.5 1.5 0 000 3",
+cue:"M4 20L20 4M4 20l2.5-.6M17 7l2 2",
+star:"M12 2l3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z",
+clock:"M12 21a9 9 0 100-18 9 9 0 000 18M12 7v5l3 2",
+tag:"M20.6 13.4l-7.2 7.2a2 2 0 01-2.8 0L3 13V3h10l7.6 7.6a2 2 0 010 2.8M7.5 7.5h.01",
+shield:"M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z",
+headset:"M4 14v-2a8 8 0 0116 0v2M4 14h3v5H4zM17 14h3v5h-3z",
+check:"M5 12l5 5 9-10",
+plus:"M12 5v14M5 12h14",
+cart:"M3 4h2l2.4 11h10.2L20 7H6M9 20h.01M17 20h.01",
+menu:"M4 7h16M4 12h16M4 17h16",
+down:"M6 9l6 6 6-6",
+left:"M19 12H5M11 6l-6 6 6 6",
+right:"M5 12h14M13 6l6 6-6 6",
+phone:"M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2",
+mail:"M3 5h18v14H3zM3 7l9 6 9-6",
+pin:"M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11M12 12a2.5 2.5 0 100-5 2.5 2.5 0 000 5"
+};
+function ic(n,s){return '<svg class="i"'+(s?' style="'+s+'"':'')+' viewBox="0 0 24 24" aria-hidden="true"><path d="'+P[n]+'"/></svg>'}
+function $(s,r){return (r||document).querySelector(s)}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+
+/* ---------- illustrations (inline SVG, theme aware) ---------- */
+function bx(x,y,w,h){return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="var(--a2)" stroke="var(--a3)" stroke-width="3"/><rect x="'+(x+w/2-9)+'" y="'+y+'" width="18" height="'+Math.round(h*.38)+'" fill="var(--a3)" opacity=".5"/>'}
+function wins(x,y,c,r,w,h,g,f){var s='';for(var i=0;i<c;i++)for(var j=0;j<r;j++)s+='<rect x="'+(x+i*(w+g))+'" y="'+(y+j*(h+g))+'" width="'+w+'" height="'+h+'" fill="'+f+'" opacity="'+((i*3+j*5)%4===0?'1':'.55')+'"/>';return s}
+var SC={
+truck:function(){return '<rect x="40" y="118" width="190" height="98" rx="8" fill="var(--a1)"/><path d="M230 144h50l42 42v30h-92z" fill="var(--a1)"/><path d="M242 154h32l26 26h-58z" fill="var(--sky)"/>'+bx(58,134,50,44)+bx(114,134,50,44)+bx(170,148,44,30)+'<rect x="40" y="196" width="282" height="8" fill="var(--a2)"/><circle cx="92" cy="220" r="21" fill="var(--a1)" stroke="var(--a5)" stroke-width="5"/><circle cx="92" cy="220" r="6" fill="var(--a5)"/><circle cx="272" cy="220" r="21" fill="var(--a1)" stroke="var(--a5)" stroke-width="5"/><circle cx="272" cy="220" r="6" fill="var(--a5)"/>'},
+boxes:function(){return bx(70,150,110,75)+bx(190,165,120,60)+bx(105,95,90,55)+bx(215,118,80,47)},
+house:function(){return '<path d="M55 132L200 58l145 74z" fill="var(--a1)"/><rect x="78" y="132" width="244" height="93" fill="var(--a5)"/><rect x="180" y="165" width="40" height="60" fill="var(--a2)"/><rect x="98" y="150" width="52" height="40" fill="var(--sky)"/><rect x="250" y="150" width="52" height="40" fill="var(--sky)"/><circle cx="44" cy="190" r="24" fill="var(--a3)" opacity=".55"/><rect x="41" y="205" width="6" height="20" fill="var(--a1)"/><circle cx="360" cy="196" r="20" fill="var(--a3)" opacity=".55"/><rect x="357" y="208" width="6" height="17" fill="var(--a1)"/>'},
+office:function(){return '<rect x="120" y="40" width="160" height="185" fill="var(--a1)"/>'+wins(132,54,6,8,18,12,6,'var(--sky)')+'<rect x="56" y="120" width="64" height="105" fill="var(--a3)"/>'+wins(64,130,3,5,13,12,6,'var(--sky)')+'<rect x="280" y="96" width="70" height="129" fill="var(--a3)" opacity=".85"/>'+wins(290,106,3,6,13,12,6,'var(--sky)')},
+corp:function(){return '<rect x="60" y="80" width="90" height="145" fill="var(--a1)"/><rect x="160" y="40" width="90" height="185" fill="var(--a3)"/><rect x="260" y="100" width="80" height="125" fill="var(--a1)"/>'+wins(70,92,4,8,14,10,6,'var(--sky)')+wins(170,52,4,11,14,10,6,'var(--a5)')+wins(270,112,3,7,14,10,6,'var(--sky)')},
+staff:function(){return '<rect x="40" y="130" width="90" height="95" fill="var(--a1)"/><rect x="150" y="100" width="100" height="125" fill="var(--a3)"/><rect x="270" y="140" width="90" height="85" fill="var(--a1)"/>'+wins(50,142,3,4,18,12,6,'var(--sky)')+wins(160,112,3,6,20,12,6,'var(--a5)')+wins(280,152,3,3,18,12,6,'var(--sky)')+bx(176,188,30,37)},
+warehouse:function(){return '<path d="M30 110L200 52l170 58v115H30z" fill="var(--a1)"/><rect x="52" y="140" width="88" height="85" fill="var(--a2)"/><rect x="156" y="140" width="88" height="85" fill="var(--a2)"/><rect x="260" y="140" width="88" height="85" fill="var(--a2)"/>'+[0,1,2].map(function(i){return '<path d="M'+(52+i*104)+' 156h88M'+(52+i*104)+' 172h88M'+(52+i*104)+' 188h88M'+(52+i*104)+' 204h88" stroke="var(--a3)" stroke-width="3"/>'}).join('')},
+it:function(){return '<rect x="50" y="80" width="150" height="100" rx="8" fill="var(--a1)"/><rect x="60" y="90" width="130" height="80" fill="var(--sky)"/><path d="M80 150l24-30 20 18 24-34 26 46z" fill="var(--a2)"/><rect x="112" y="180" width="26" height="30" fill="var(--a1)"/><rect x="88" y="208" width="74" height="9" rx="4" fill="var(--a1)"/><rect x="250" y="56" width="90" height="169" rx="6" fill="var(--a1)"/>'+[0,1,2,3,4,5].map(function(i){return '<rect x="260" y="'+(68+i*26)+'" width="70" height="16" fill="var(--sky)" opacity=".5"/><circle cx="322" cy="'+(76+i*26)+'" r="3" fill="var(--a2)"/>'}).join('')},
+piano:function(){return '<path d="M70 132L290 92l30 40z" fill="var(--a1)" opacity=".85"/><rect x="70" y="132" width="250" height="40" rx="6" fill="var(--a1)"/><rect x="82" y="172" width="226" height="14" fill="var(--a5)"/>'+[0,1,2,3,4,5,6,7,8,9,10,11].map(function(i){return '<path d="M'+(94+i*18.5)+' 172v14" stroke="var(--a1)" stroke-width="1.5"/>'}).join('')+'<rect x="90" y="186" width="10" height="39" fill="var(--a1)"/><rect x="290" y="186" width="10" height="39" fill="var(--a1)"/><rect x="170" y="200" width="60" height="12" rx="4" fill="var(--a3)"/><rect x="180" y="212" width="8" height="13" fill="var(--a3)"/><rect x="212" y="212" width="8" height="13" fill="var(--a3)"/>'},
+art:function(){return '<rect x="40" y="34" width="320" height="170" fill="var(--a5)" opacity=".6"/><rect x="62" y="62" width="100" height="76" fill="var(--sky)" stroke="var(--a1)" stroke-width="5"/><path d="M62 138l30-34 24 20 20-24 26 38z" fill="var(--a2)"/><rect x="182" y="52" width="72" height="104" fill="var(--sky)" stroke="var(--a1)" stroke-width="5"/><circle cx="218" cy="92" r="20" fill="var(--a3)"/><rect x="274" y="76" width="70" height="64" fill="var(--sky)" stroke="var(--a1)" stroke-width="5"/><path d="M274 140l24-30 22 14 24-22v38z" fill="var(--a1)"/>'},
+sofa:function(){return '<rect x="86" y="108" width="228" height="64" rx="18" fill="var(--a1)"/><rect x="62" y="136" width="50" height="76" rx="16" fill="var(--a3)"/><rect x="288" y="136" width="50" height="76" rx="16" fill="var(--a3)"/><rect x="104" y="150" width="192" height="56" rx="12" fill="var(--a1)"/><rect x="110" y="156" width="88" height="42" rx="10" fill="var(--a2)"/><rect x="204" y="156" width="88" height="42" rx="10" fill="var(--a2)" opacity=".8"/><rect x="76" y="212" width="10" height="13" fill="var(--a1)"/><rect x="314" y="212" width="10" height="13" fill="var(--a1)"/>'},
+pool:function(){return '<path d="M80 130h240l50 70H30z" fill="var(--a3)"/><path d="M96 136h208l38 54H58z" fill="var(--a1)"/><circle cx="170" cy="160" r="9" fill="var(--a2)"/><circle cx="196" cy="168" r="9" fill="var(--a5)"/><circle cx="222" cy="158" r="9" fill="var(--a3)"/><circle cx="250" cy="170" r="9" fill="var(--a2)"/><path d="M300 90L140 168" stroke="var(--a5)" stroke-width="5" stroke-linecap="round"/><rect x="44" y="200" width="14" height="25" fill="var(--a3)"/><rect x="342" y="200" width="14" height="25" fill="var(--a3)"/>'},
+cue:function(){return '<path d="M60 60L340 210" stroke="var(--a3)" stroke-width="10" stroke-linecap="round"/><path d="M60 60L90 76" stroke="var(--a5)" stroke-width="12" stroke-linecap="round"/><path d="M80 180h240" stroke="var(--a1)" stroke-width="6" opacity=".3"/><circle cx="150" cy="190" r="13" fill="var(--a2)"/><circle cx="180" cy="196" r="13" fill="var(--a1)"/><circle cx="210" cy="188" r="13" fill="var(--a5)"/><circle cx="240" cy="198" r="13" fill="var(--a3)"/>'},
+hotel:function(){return '<rect x="50" y="98" width="22" height="127" fill="var(--a3)"/><rect x="50" y="150" width="300" height="58" rx="8" fill="var(--a1)"/><rect x="80" y="128" width="70" height="28" rx="10" fill="var(--a5)"/><rect x="160" y="128" width="70" height="28" rx="10" fill="var(--a5)"/><rect x="72" y="166" width="278" height="22" fill="var(--a2)"/><rect x="60" y="208" width="10" height="17" fill="var(--a1)"/><rect x="330" y="208" width="10" height="17" fill="var(--a1)"/><rect x="300" y="100" width="40" height="40" fill="var(--a2)" opacity=".9"/><path d="M320 140v10" stroke="var(--a1)" stroke-width="4"/>'},
+retail:function(){return '<rect x="40" y="70" width="320" height="155" fill="var(--a5)" opacity=".7"/>'+[0,1,2,3,4,5,6,7].map(function(i){return '<path d="M'+(40+i*40)+' 70h40l-6 34h-40z" fill="'+(i%2?'var(--a5)':'var(--a2)')+'" stroke="var(--a3)" stroke-width="1"/>'}).join('')+'<rect x="62" y="118" width="170" height="107" fill="var(--sky)" stroke="var(--a1)" stroke-width="4"/><rect x="262" y="118" width="70" height="107" fill="var(--a1)"/><circle cx="130" cy="152" r="12" fill="var(--a3)"/><rect x="118" y="164" width="24" height="46" fill="var(--a3)"/><circle cx="180" cy="152" r="12" fill="var(--a2)"/><rect x="168" y="164" width="24" height="46" fill="var(--a2)"/>'},
+tape:function(){return '<circle cx="200" cy="130" r="82" fill="var(--a2)" stroke="var(--a3)" stroke-width="5"/><circle cx="200" cy="130" r="34" fill="var(--sky)" stroke="var(--a3)" stroke-width="5"/><path d="M262 188l70 28-80 10z" fill="var(--a2)" stroke="var(--a3)" stroke-width="3"/><circle cx="200" cy="130" r="58" fill="none" stroke="var(--a3)" stroke-width="2" opacity=".5"/>'},
+bubble:function(){var d='';for(var i=0;i<7;i++)for(var j=0;j<4;j++)d+='<circle cx="'+(96+i*30)+'" cy="'+(110+j*24)+'" r="9" fill="var(--a5)" opacity=".6" stroke="var(--a1)" stroke-opacity=".2"/>';return '<rect x="80" y="90" width="240" height="110" fill="var(--sky)" stroke="var(--a1)" stroke-width="4"/>'+d+'<ellipse cx="80" cy="145" rx="22" ry="55" fill="var(--a5)" stroke="var(--a1)" stroke-width="4"/><ellipse cx="80" cy="145" rx="9" ry="22" fill="var(--a2)"/>'},
+wrap:function(){return '<rect x="130" y="50" width="140" height="165" rx="10" fill="var(--sky)" stroke="var(--a1)" stroke-width="4"/><path d="M150 70v125M178 62v140M210 66v136" stroke="var(--a5)" stroke-width="6" opacity=".8" stroke-linecap="round"/><rect x="180" y="26" width="40" height="24" fill="var(--a2)"/><rect x="180" y="215" width="40" height="10" fill="var(--a2)"/>'},
+blanket:function(){return [0,1,2,3].map(function(i){return '<rect x="'+(70+i*8)+'" y="'+(70+i*38)+'" width="'+(250-i*16)+'" height="34" rx="8" fill="'+(i%2?'var(--a3)':'var(--a1)')+'"/><path d="M'+(86+i*8)+' '+(76+i*38)+'v22M'+(110+i*8)+' '+(76+i*38)+'v22" stroke="var(--a2)" stroke-width="4" opacity=".8"/>'}).join('')},
+mattress:function(){return '<path d="M70 170l60-60h210l-60 60z" fill="var(--a5)" stroke="var(--a1)" stroke-width="4"/><rect x="70" y="170" width="220" height="32" fill="var(--sky)" stroke="var(--a1)" stroke-width="4"/><path d="M290 170l50-60v32l-50 60z" fill="var(--a3)" stroke="var(--a1)" stroke-width="4"/><path d="M120 130l-20 40M200 124l-30 46M280 124l-40 46" stroke="var(--a1)" stroke-width="2" opacity=".3"/>'},
+wardrobe:function(){return bx(120,46,160,170)+'<rect x="136" y="64" width="128" height="8" rx="4" fill="var(--a3)"/>'+[0,1,2,3].map(function(i){return '<path d="M'+(152+i*32)+' 72v10l-20 14h40l-20-14" fill="var(--a5)" stroke="var(--a1)" stroke-width="2"/>'}).join('')},
+kit:function(){return bx(100,120,200,100)+'<path d="M100 120l-30-34h60l30 34zM300 120l30-34h-60l-30 34z" fill="var(--a3)"/><circle cx="170" cy="100" r="22" fill="var(--a5)" stroke="var(--a1)" stroke-width="4"/><circle cx="170" cy="100" r="8" fill="var(--sky)"/><rect x="214" y="64" width="26" height="54" rx="5" fill="var(--a1)"/><rect x="220" y="56" width="14" height="10" fill="var(--a1)"/>'},
+marker:function(){return '<g transform="rotate(-28 200 130)"><rect x="90" y="116" width="200" height="28" rx="6" fill="var(--a1)"/><rect x="290" y="116" width="34" height="28" fill="var(--a2)"/><path d="M324 116l22 14-22 14z" fill="var(--a1)"/></g><rect x="80" y="170" width="90" height="46" rx="4" fill="var(--a5)" stroke="var(--a1)" stroke-width="3"/><rect x="190" y="170" width="90" height="46" rx="4" fill="var(--a2)" stroke="var(--a3)" stroke-width="3"/><path d="M92 186h60M92 198h40M202 186h60" stroke="var(--a1)" stroke-width="3"/>'},
+corner:function(){return '<path d="M80 80h90v26h-64v64H80z" fill="var(--a1)"/><path d="M230 80h90v90h-26v-64h-64z" fill="var(--a3)"/><path d="M80 230V140h26v64h64v26z" fill="var(--a3)" transform="translate(0 -20)"/><path d="M320 210v-70h-26v44h-44v26z" fill="var(--a1)" transform="translate(0 -10)"/>'},
+studio:function(){return bx(60,140,100,80)+bx(170,150,110,70)+bx(100,92,80,48)+'<circle cx="320" cy="170" r="34" fill="var(--a5)" stroke="var(--a1)" stroke-width="5"/><circle cx="320" cy="170" r="12" fill="var(--a2)"/><rect x="286" y="206" width="70" height="18" rx="4" fill="var(--sky)" stroke="var(--a1)" stroke-width="3"/>'}
+};
+var IMG_DIR="images/";
+function photo(k,label){return '<img class="photo" src="'+IMG_DIR+k+'.jpg" alt="'+esc(label||k)+'" loading="lazy" onerror="this.remove()">'}
+function art(k,label){return '<span class="pw">'+artSvg(k,label)+photo(k,label)+'</span>'}
+function artSvg(k,label){return '<svg class="art" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" role="img" aria-label="'+esc(label||k)+'"><rect width="400" height="260" fill="var(--sky)"/><circle cx="336" cy="52" r="26" fill="var(--a2)" opacity=".85"/><rect y="225" width="400" height="35" fill="var(--a1)" opacity=".14"/>'+(SC[k]||SC.boxes)()+'</svg>'}
+function rnd(i){var x=Math.sin(i*127.1+311.7)*43758.5453;return x-Math.floor(x)}
+function skyline(w,h,seed,fill,spireAt){var s='',x=0,i=seed;while(x<w){var bw=28+rnd(i++)*50,bh=h*(.25+rnd(i++)*.55);s+='<rect x="'+x.toFixed(0)+'" y="'+(h-bh).toFixed(0)+'" width="'+bw.toFixed(0)+'" height="'+bh.toFixed(0)+'" fill="'+fill+'"/>';x+=bw+4}var sx=w*spireAt;s+='<path d="M'+(sx-16)+' '+h+'L'+sx+' '+(h*.04)+'L'+(sx+16)+' '+h+'z" fill="'+fill+'"/>';return s}
+function heroScene(){return '<svg viewBox="0 0 1200 560" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><rect width="1200" height="560" fill="var(--hero)"/><circle cx="980" cy="150" r="70" fill="var(--accent)" opacity=".16"/>'+'<g transform="translate(0 220)">'+skyline(1200,340,3,'var(--hero-sky)',.82)+'</g><rect y="500" width="1200" height="60" fill="var(--hero-line)"/><path d="M0 530h1200" stroke="var(--accent)" stroke-width="3" stroke-dasharray="30 22" opacity=".6"/><g transform="translate(90 250) scale(1.1)" style="--a1:#2a528f;--sky:#cfe0f7;--a5:#ffffff">'+SC.truck()+'</g></svg>'}
+function bannerScene(k){return '<svg viewBox="0 0 1200 300" preserveAspectRatio="xMaxYMax slice" aria-hidden="true"><rect width="1200" height="300" fill="var(--hero)"/><g transform="translate(0 110)">'+skyline(1200,190,9,'var(--hero-sky)',.9)+'</g><rect y="270" width="1200" height="30" fill="var(--hero-line)"/><g transform="translate(760 70) scale(.8)" opacity=".95" style="--a1:#2a528f;--sky:#cfe0f7;--a5:#ffffff">'+(SC[k]||SC.truck)()+'</g></svg>'}
+function footScene(){return '<svg viewBox="0 0 1200 130" preserveAspectRatio="none" aria-hidden="true">'+skyline(1200,130,21,'var(--hero-sky)',.15)+'</svg>'}
+
+/* ---------- data ---------- */
+var EM=["Dubai","Sharjah","Ajman","Ras Al Khaimah","Umm Al Quwain","Fujairah","Abu Dhabi","Al Ain"];
+var COMMON=["Trained, insured crew","Protective wrapping for furniture and floors"];
+var SV=[
+{id:"packing-moving",t:"Packing & Moving",k:"boxes",ic:"box",d:"Full-service packing with quality materials, loading, transport and unpacking.",inc:["Room-by-room packing and labelling","Wardrobe boxes and fragile kits","Unpacking and box removal"]},
+{id:"residential",t:"Residential Moving",k:"house",ic:"home",d:"From studios to family homes, a smooth and stress-free household move.",inc:["Furniture dismantling and re-assembly","Appliance disconnect and reconnect","Same-day set-up in the new home"]},
+{id:"office",t:"Office Moving",k:"office",ic:"building",d:"Minimal downtime. We relocate your workspace and have you running fast.",inc:["Desk and workstation tagging","IT and cable handling","Weekend and after-hours moves"]},
+{id:"villa",t:"Villa Moving",k:"house",ic:"home",d:"Large furniture and delicate items, handled with care into your new villa.",inc:["Multi-floor and garden item handling","Heavy furniture lifting equipment","Crating of mirrors and glass"]},
+{id:"corporate",t:"Corporate Relocation",k:"corp",ic:"building",d:"Whole-company moves planned in phases so operations keep running.",inc:["Project manager and move plan","Phased department moves","Asset inventory and tracking"]},
+{id:"staff",t:"Staff Accommodation Moving",k:"staff",ic:"users",d:"Packing to delivery for your team's new accommodation.",inc:["Bulk bed and wardrobe moves","Multiple rooms, one schedule","Fast turnaround between buildings"]},
+{id:"warehouse",t:"Commercial / Warehouse Moving",k:"warehouse",ic:"warehouse",d:"Large-scale moves of inventory, racking and equipment.",inc:["Pallet and racking moves","Forklift and loading equipment","Inventory check at both ends"]},
+{id:"it",t:"IT Equipment Moving",k:"it",ic:"monitor",d:"Specialised handling for servers, workstations and networking gear.",inc:["Anti-static packing","Rack and server transport","Re-installation support"]},
+{id:"piano",t:"Piano Moving",k:"piano",ic:"music",d:"Trained crews and the right equipment for your valuable piano.",inc:["Upright, baby grand and grand pianos","Piano boards and padded wrap","Stairs and lift access planning"]},
+{id:"fine-arts",t:"Fine Arts Moving",k:"art",ic:"frame",d:"Custom crating and transport for art collections.",inc:["Custom wooden crates","Acid-free wrapping","Climate-aware transport"]},
+{id:"furniture",t:"Furniture Installation",k:"sofa",ic:"sofa",d:"We disassemble, transport and reassemble at your new location.",inc:["Flat-pack assembly","Wall mounting and fitting","Packaging waste removal"]},
+{id:"storage",t:"Warehousing & Storage",k:"warehouse",ic:"warehouse",d:"Secure, clean short and long-term storage for your belongings.",inc:["Short and long-term terms","Clean, secure facility","Pick-up and delivery on request"]},
+{id:"pool-table",t:"Pool Table Moving",k:"pool",ic:"ball",d:"Safe dismantling, transport and levelled installation.",inc:["Slate handling","Cloth protection","Levelling after installation"]},
+{id:"snooker",t:"Billiards & Snooker Moving",k:"cue",ic:"cue",d:"Full-size tables moved and re-fitted by specialists.",inc:["Full-size table dismantling","Cushion and pocket protection","Re-covering on request"]},
+{id:"hotel",t:"Hotel Furniture Installation",k:"hotel",ic:"hotel",d:"Bulk delivery and fit-out for hotels and serviced apartments.",inc:["Room-by-room delivery plans","Bed and furniture assembly","Debris and packaging removal"]},
+{id:"retail",t:"Retail Showroom Moving",k:"retail",ic:"store",d:"Seamless showroom moves with minimal disruption to sales.",inc:["Display and fixture moves","Mannequin and shelving handling","Overnight scheduling"]}
+];
+var PR=[
+{id:1,t:"Medium Moving Boxes, 10 pack",c:"Boxes",k:"boxes",p:69,d:"Double-wall corrugated boxes for books, kitchenware and general items.",s:[["Size","45 x 35 x 30 cm"],["Pack","10 boxes"],["Load","up to 25 kg each"]]},
+{id:2,t:"Large Heavy-Duty Boxes, 10 pack",c:"Boxes",k:"boxes",p:89,d:"Extra-strong boxes for bedding, clothing and lightweight bulky items.",s:[["Size","60 x 45 x 45 cm"],["Pack","10 boxes"],["Load","up to 30 kg each"]]},
+{id:3,t:"Wardrobe Box with Hanging Rail",c:"Boxes",k:"wardrobe",p:45,d:"Move clothes on their hangers. Includes a metal rail and carry handles.",s:[["Size","50 x 50 x 100 cm"],["Pack","1 box"],["Holds","about 20 garments"]]},
+{id:4,t:"Packing Tape, 6 roll pack",c:"Tapes & Wrap",k:"tape",p:29,d:"Clear, strong tape that stays put on corrugated board.",s:[["Width","48 mm"],["Length","66 m per roll"],["Pack","6 rolls"]]},
+{id:5,t:"Bubble Wrap Roll, 50 m",c:"Tapes & Wrap",k:"bubble",p:55,d:"Cushioning for glass, electronics and ceramics.",s:[["Width","50 cm"],["Length","50 m"],["Bubble","10 mm"]]},
+{id:6,t:"Stretch Film, 500 mm",c:"Tapes & Wrap",k:"wrap",p:38,d:"Bundle furniture and keep drawers shut without leaving residue.",s:[["Width","500 mm"],["Length","300 m"],["Core","with handle"]]},
+{id:7,t:"Furniture Moving Blankets, 4 pack",c:"Protection",k:"blanket",p:120,d:"Padded blankets that stop dents and scratches in the truck.",s:[["Size","180 x 200 cm"],["Pack","4 blankets"],["Reusable","yes"]]},
+{id:8,t:"Mattress Covers, 3 pack",c:"Protection",k:"mattress",p:35,d:"Heavy plastic covers with a zip to keep mattresses clean and dry.",s:[["Fits","single to king"],["Pack","3 covers"],["Closure","zip"]]},
+{id:9,t:"Corner & Edge Protectors, 12 pack",c:"Protection",k:"corner",p:32,d:"Foam corners for tables, frames and appliances.",s:[["Pack","12 pieces"],["Material","dense foam"],["Fit","up to 5 cm edges"]]},
+{id:10,t:"Fragile Dish & Glass Kit",c:"Kits",k:"kit",p:79,d:"Dividers, foam pouches, paper and tape for a full kitchen.",s:[["Includes","boxes, dividers, paper"],["Covers","about 40 pieces"],["Level","fragile"]]},
+{id:11,t:"Studio Apartment Moving Kit",c:"Kits",k:"studio",p:249,d:"Boxes, tape, wrap and labels sized for a studio or 1-bedroom move.",s:[["Boxes","20 mixed"],["Extras","tape, wrap, labels"],["Fits","studio / 1 bed"]]},
+{id:12,t:"Labels & Marker Set",c:"Kits",k:"marker",p:19,d:"Colour-coded labels and a bold marker to sort rooms in seconds.",s:[["Labels","100 pieces"],["Colours","5"],["Marker","permanent"]]}
+];
+var RV=[
+["I relocated within Dubai and the whole team was patient, professional and hard-working. Their price was the most competitive of the five quotes I took.","David J.","Dubai"],
+["Very professional team. They worked quickly and without fuss, and the prices were fair. Highly recommended for house shifting.","Nebu M.","Ajman"],
+["Moved my apartment from Sharjah to Dubai last week. Packing and handling were excellent, at an affordable price.","Michael S.","Sharjah"],
+["I asked for a last-minute move and they were available straight away. Not a scratch on the furniture.","Roujina Q.","Dubai"],
+["Fourth time using them in ten years. They pack everything and set it up in exactly the same spot in the new flat.","Salman K.","Dubai"],
+["Dismantled, packed with fragile precautions, loaded, moved and re-assembled the same day from RAK to Sharjah. Very smooth.","Salik K.","Ras Al Khaimah"]
+];
+var BL=[
+{t:"How to choose the best movers in Dubai",d:"Oct 26, 2026",k:"truck",b:["Start with the basics: is the company licensed, are the crews insured, and will you get a written, itemised quote? A low price with no breakdown usually grows on moving day.","Ask how many people will arrive, what equipment they bring and whether packing materials are included. Crews that dismantle and re-assemble furniture save you a full day of work.","Finally, read recent reviews and ask for a photo-based estimate. A mover who asks about floors, lifts and parking is a mover who has done this before."]},
+{t:"Why professional furniture movers keep your pieces safe",d:"Oct 15, 2026",k:"sofa",b:["Most furniture damage happens in the stairwell, not the truck. Trained crews plan the route, measure doorways and wrap every edge before a piece moves.","Blankets, corner protectors and stretch film cost very little compared with a scratched dining table. Using the right material for each surface is the difference.","If you are moving yourself, our shop sells the same wrapping and protection our crews use."]},
+{t:"What to expect from a villa move in Ajman",d:"Oct 12, 2026",k:"house",b:["Villas mean more rooms, more floors and often outdoor items. We start with a walk-through or photo survey so the crew size and truck count are right.","Heavy items such as majlis seating, wardrobes and garden furniture are dismantled first. Mirrors and glass tops are crated.","On arrival we place furniture where you want it and remove the packaging, so the first evening in your new villa feels like home."]}
+];
+var FAQ=[
+["How far ahead should I book?","Two weeks gives you the best choice of dates. For month-end and weekends, book earlier. Last-minute moves are often possible, so call us."],
+["Are my belongings insured during the move?","Yes. Our crews are insured and handling is covered. Ask us for the details when you request your quote."],
+["Do you provide packing materials?","Yes. Boxes, bubble wrap, furniture covers and tape come with packing services, and you can also buy them in our shop."],
+["Can you move a piano or pool table?","Yes. We have dedicated crews and equipment for pianos, pool tables, billiards and snooker tables."],
+["Do you offer storage?","Yes. We have clean, secure warehousing for short and long-term storage in Dubai and Sharjah."],
+["How is the price calculated?","By inventory, distance, floors and access, plus any special items. You receive an itemised quote before you commit."]
+];
+var STEPS=[["Request a free quote","Use the form or call us. You get an estimate based on your inventory and floors."],["Schedule your move","Pick the date and time that suits you. Our crews arrive on schedule."],["Professional packing","Experts wrap and box with quality materials, labelled room by room."],["Safe transportation","Insured transport to your new place, whether across town or across emirates."],["Unpacking and set-up","We unpack, re-assemble furniture and place everything where you want it."]];
+var COV={"Dubai":"Our home base. Apartments in Marina and Downtown, villas in Arabian Ranches and Mirdif, offices across Business Bay.","Sharjah":"Regular routes between Sharjah and Dubai, plus local moves in Al Nahda, Al Khan and Muwaileh.","Ajman":"Villa and apartment moves in Ajman with secure packing and fast turnaround.","Ras Al Khaimah":"Full-day inter-emirate moves with dismantling, loading and re-assembly on the same day.","Umm Al Quwain":"Reliable crews for homes and small offices, scheduled around your date.","Fujairah":"East-coast moves with careful handling across mountain roads.","Abu Dhabi":"Regular capital runs for homes, corporate relocations and staff accommodation.","Al Ain":"Villa and office moves to and from Al Ain, with storage available if dates do not line up."};
+function svc(id){return SV.filter(function(s){return s.id===id})[0]}
+function prod(id){return PR.filter(function(p){return p.id===+id})[0]}
+function aed(n){return 'AED '+n.toFixed(n%1?2:0)}
+
+/* ---------- cart ---------- */
+var cart=[];
+try{cart=JSON.parse(localStorage.getItem('pm-cart')||'[]')||[]}catch(e){cart=[]}
+cart=cart.filter(function(c){return prod(c.id)&&c.q>0});
+function saveCart(){try{localStorage.setItem('pm-cart',JSON.stringify(cart))}catch(e){}$('#cartN').textContent=cart.reduce(function(a,c){return a+c.q},0)}
+function addCart(id,q){var l=cart.filter(function(c){return c.id===+id})[0];if(l)l.q+=q;else cart.push({id:+id,q:q});saveCart()}
+function totals(){var sub=cart.reduce(function(a,c){return a+prod(c.id).p*c.q},0);var ship=sub===0?0:(sub>=200?0:25);var vat=Math.round(sub*0.05*100)/100;return{sub:sub,ship:ship,vat:vat,total:sub+ship+vat}}
+
+/* ---------- shared fragments ---------- */
+function banner(title,lead,crumbs,k){return '<div class="banner"><div class="scene">'+bannerScene(k)+'<img class="bgphoto" src="'+IMG_DIR+'banner.jpg" alt="" onerror="this.remove()"></div><div class="wrap"><div class="crumb"><a href="#home">Home</a>'+crumbs+'</div><h1>'+title+'</h1>'+(lead?'<p>'+lead+'</p>':'')+'</div></div>'}
+function emOpts(sel){return EM.map(function(e,i){return '<option'+(i===sel?' selected':'')+'>'+e+'</option>'}).join('')}
+function quoteForm(pre,heading,note){return '<form class="quote" data-form="quote" novalidate><h2>'+heading+'</h2><p class="note">'+note+'</p><div class="row2"><label for="'+pre+'n">Name<input id="'+pre+'n" type="text" placeholder="Full name" required></label><label for="'+pre+'p">Phone<input id="'+pre+'p" type="tel" placeholder="05X XXX XXXX" required></label></div><div class="row2"><label for="'+pre+'e">Email<input id="'+pre+'e" type="email" placeholder="you@email.com"></label><label for="'+pre+'d">Moving date<input id="'+pre+'d" type="date"></label></div><div class="row2"><label for="'+pre+'f">Moving from<select id="'+pre+'f">'+emOpts(0)+'</select></label><label for="'+pre+'t">Moving to<select id="'+pre+'t">'+emOpts(1)+'</select></label></div><label for="'+pre+'m">Message<textarea id="'+pre+'m" placeholder="2-bedroom apartment, 3rd floor, piano on site…"></textarea></label><button class="btn" type="submit">Request my quote</button><div class="ok" role="status">Thanks. Your quote request is in. This is a demo form, nothing is sent.</div></form>'}
+function svcCard(s){return '<a class="svc" href="#service-'+s.id+'"><div class="img">'+art(s.k,s.t)+'</div><div class="b"><h3>'+s.t+'</h3><p>'+s.d+'</p><span class="more">Learn more →</span></div></a>'}
+function prodCard(p){return '<article class="prod"><a class="img" href="#product-'+p.id+'">'+art(p.k,p.t)+'</a><div class="b"><span class="cat">'+p.c+'</span><h3><a href="#product-'+p.id+'">'+p.t+'</a></h3><div class="foot"><span class="price">'+aed(p.p)+'</span><button class="btn sm" data-add="'+p.id+'">Add to cart</button></div></div></article>'}
+function blogCard(b,i){return '<a class="post" href="#post-'+(i+1)+'"><div class="thumb">'+art(b.k,b.t)+'</div><span class="date">'+b.d+'</span><h3>'+b.t+'</h3></a>'}
+function cta(){return '<div class="cta-band"><div class="wrap"><div><h2>Ready to unpack your new life?</h2><p>Home, office or villa, our crews are ready. Get a free quote today.</p></div><a class="btn" href="#contact-us">Get a free quote</a></div></div>'}
+function stars(){var s='';for(var i=0;i<5;i++)s+='<svg viewBox="0 0 24 24"><path d="'+P.star+'"/></svg>';return s}
+function revs(){return '<div class="track" id="track">'+RV.map(function(r){return '<article class="rev"><div class="stars" aria-label="5 stars">'+stars()+'</div><p>“'+r[0]+'”</p><div class="who-r"><div class="av">'+r[1][0]+'</div><div><b>'+r[1]+'</b><span>'+r[2]+'</span></div></div></article>'}).join('')+'</div>'}
+function steps(){return '<div class="steps">'+STEPS.map(function(s,i){return '<div class="step"><span class="n">Step '+(i+1)+'</span><h3>'+s[0]+'</h3><p>'+s[1]+'</p></div>'}).join('')+'</div>'}
+function faq(){return FAQ.map(function(q,i){return '<details'+(i===0?' open':'')+'><summary>'+q[0]+'<i>'+ic('plus','width:16px;height:16px')+'</i></summary><p>'+q[1]+'</p></details>'}).join('')}
+function why(){var W=[["users","Experienced professionals","Seasoned crew leaders bring skill and calm to every project."],["tag","Affordable pricing","Clear, itemised quotes with no hidden costs on moving day."],["clock","Quick and efficient","Fast, organised execution so you are settled sooner."],["box","Secure packing","Quality materials and proven techniques keep belongings intact."],["shield","Insured handling","Every move is covered, from fragile glass to heavy appliances."],["headset","Dedicated support","A real person answers your questions at every step."]];return '<div class="grid3">'+W.map(function(f){return '<div class="feat"><div class="ic">'+ic(f[0])+'</div><h3>'+f[1]+'</h3><p>'+f[2]+'</p></div>'}).join('')+'</div>'}
+function coverage(){return '<section class="cover"><div class="wrap"><div><div class="head"><span class="eyebrow">Coverage</span><h2>We cover the whole United Arab Emirates.</h2><p>Pick an emirate to see how we serve it.</p></div><div class="pills" id="pills">'+EM.map(function(e,i){return '<button type="button" class="pill" data-em="'+e+'" aria-pressed="'+(i===0)+'">'+e+'</button>'}).join('')+'</div></div><div class="map"><h3 id="mapT">Dubai</h3><p id="mapP">'+COV.Dubai+'</p><div class="bar"><div><b>10+ yrs</b><span>Fulfilling UAE moving needs</span></div><div><b>25,000+</b><span>Moves expertly handled</span></div></div></div></div></section>'}
+
+/* ---------- pages ---------- */
+var PAGES={};
+PAGES.home=function(){
+  return '<div class="hero"><div class="scene">'+heroScene()+'<img class="bgphoto" src="'+IMG_DIR+'hero.jpg" alt="" onerror="this.remove()"></div><div class="wrap"><div class="hero-copy"><span class="tag">Movers &amp; Packers · Dubai · Sharjah · Ajman</span><h1>Stress-free moves, <em>made simple.</em></h1><p class="lead">From apartments and villas to offices and warehouses, our trained and insured crews pack, move and set up everything. Need supplies? Shop boxes, tape and protection online.</p><div class="hero-actions"><button class="btn" data-scroll="#hq">Book your move '+ic('right','width:18px;height:18px')+'</button><a class="btn onhero" href="#shop">Shop packing supplies</a></div></div><div id="hq">'+quoteForm('h','Get a free quote','Tell us about your move. We reply within the hour.')+'</div></div></div>'
+  +'<div class="stats"><div class="wrap"><div class="stat"><b>10+</b><span>Years moving the UAE</span></div><div class="stat"><b>5,000+</b><span>Happy customers</span></div><div class="stat"><b>25,000+</b><span>Moves completed</span></div><div class="stat"><b>4.6 / 5</b><span>Rating from 657 Google reviews</span></div></div></div>'
+  +'<section><div class="wrap split"><div class="visual">'+art('truck','Moving truck loaded with boxes')+'<div class="badge"><b>10+</b><span>years of experience</span></div></div><div class="copy"><span class="eyebrow">Who we are</span><h2>Professional movers and packers for over a decade.</h2><p>We have helped more than 5,000 customers move homes, offices and businesses across Dubai, Sharjah and Ajman. Our trained, insured crews have completed over 25,000 moves, from a studio flat to a full corporate relocation.</p><ul class="checks">'+['Trained and fully insured crews','Free on-site or photo-based estimates','Same-day packing and set-up available'].map(function(t){return '<li><i>'+ic('check')+'</i>'+t+'</li>'}).join('')+'</ul><a class="btn ghost" href="#about-us">About us</a></div></div></section>'
+  +'<section class="alt"><div class="wrap"><div class="head"><span class="eyebrow">Why choose us</span><h2>Unpack your dreams, not your stress.</h2></div>'+why()+'</div></section>'
+  +'<section><div class="wrap"><div class="head row"><div style="display:flex;flex-direction:column;gap:12px;max-width:640px"><span class="eyebrow">What we do</span><h2>Every kind of move, handled by specialists.</h2></div><a class="btn ghost" href="#services">All 16 services</a></div><div class="svc-grid">'+SV.slice(0,8).map(svcCard).join('')+'</div></div></section>'
+  +'<section class="alt"><div class="wrap"><div class="head row"><div style="display:flex;flex-direction:column;gap:12px;max-width:640px"><span class="eyebrow">Packing shop</span><h2>Everything you need to pack, delivered.</h2><p>The same boxes, tape and protection our crews use. Free delivery over AED 200.</p></div><a class="btn ghost" href="#shop">Visit the shop</a></div><div class="shop-grid">'+PR.slice(0,4).map(prodCard).join('')+'</div></div></section>'
+  +coverage()
+  +'<section><div class="wrap"><div class="head row"><div style="display:flex;flex-direction:column;gap:12px"><span class="eyebrow">Testimonials</span><h2>Hear what our clients say.</h2></div><div class="arrows"><button id="prev" aria-label="Previous review">'+ic('left')+'</button><button id="next" aria-label="Next review">'+ic('right')+'</button></div></div>'+revs()+'</div></section>'
+  +'<section class="alt"><div class="wrap"><div class="head"><span class="eyebrow">How it works</span><h2>Five simple steps to a hassle-free move.</h2></div>'+steps()+'</div></section>'
+  +'<section><div class="wrap faq-wrap"><div class="head"><span class="eyebrow">FAQ</span><h2>Questions before you book.</h2><p>Cannot find yours? Call 800-0000 and we will answer it.</p></div><div>'+faq()+'</div></div></section>'
+  +'<section class="alt"><div class="wrap"><div class="head row"><div style="display:flex;flex-direction:column;gap:12px"><span class="eyebrow">Blogs</span><h2>Moving advice from our crews.</h2></div><a class="btn ghost" href="#blogs">All articles</a></div><div class="blog-grid">'+BL.map(blogCard).join('')+'</div></div></section>'+cta();
+};
+PAGES["about-us"]=function(){
+  var T=[["AR","Ahmed Raza","Operations lead"],["SK","Sara Khan","Customer care"],["MN","Mohammed Nasser","Senior crew chief"],["PD","Priya Das","Logistics planner"]];
+  return banner('About Prime Movers','A UAE moving company built on punctual crews, careful handling and honest quotes.',' / About us','truck')
+  +'<section><div class="wrap split"><div class="visual">'+art('house','House ready to move')+'</div><div class="copy"><span class="eyebrow">Our story</span><h2>Ten years of moving the UAE, one home at a time.</h2><p>We started with one truck and a promise: show up on time, protect everything, and charge what we quoted. Today we run crews across Dubai, Sharjah and Ajman, and move offices, villas and specialist items from pianos to pool tables.</p><p>Our packing shop grew out of the same idea. If you want to pack yourself, you can buy the exact materials our crews trust.</p></div></div></section>'
+  +'<section class="alt"><div class="wrap"><div class="head"><span class="eyebrow">What drives us</span><h2>Mission, vision and values.</h2></div><div class="grid3">'+[["shield","Our mission","Make every move safe, predictable and stress-free."],["star","Our vision","To be the first call for relocation across the UAE."],["users","Our values","Respect for belongings, honest pricing, and crews who care."]].map(function(f){return '<div class="feat"><div class="ic">'+ic(f[0])+'</div><h3>'+f[1]+'</h3><p>'+f[2]+'</p></div>'}).join('')+'</div></div></section>'
+  +'<div class="stats"><div class="wrap"><div class="stat"><b>10+</b><span>Years moving the UAE</span></div><div class="stat"><b>5,000+</b><span>Happy customers</span></div><div class="stat"><b>25,000+</b><span>Moves completed</span></div><div class="stat"><b>16</b><span>Specialist services</span></div></div></div>'
+  +'<section><div class="wrap"><div class="head"><span class="eyebrow">The team</span><h2>People you will actually meet.</h2></div><div class="team">'+T.map(function(m){return '<div class="member"><div class="av">'+m[0]+'</div><h3>'+m[1]+'</h3><span>'+m[2]+'</span></div>'}).join('')+'</div></div></section>'+cta();
+};
+PAGES.services=function(){
+  return banner('Our services','Sixteen services under one roof, each with its own crew, equipment and checklist.',' / Services','boxes')+'<section><div class="wrap"><div class="svc-grid">'+SV.map(svcCard).join('')+'</div></div></section>'+cta();
+};
+function serviceDetail(id){
+  var s=svc(id);if(!s)return notFound();
+  var rel=SV.filter(function(x){return x.id!==id}).slice(0,3);
+  return banner(s.t,s.d,' / <a href="#services">Services</a> / '+s.t,s.k)
+  +'<section><div class="wrap detail"><div class="main"><div class="pic">'+art(s.k,s.t)+'</div><h2>About this service</h2><p>'+s.d+' Our crews arrive on time with the right equipment, protect your floors and furniture, and keep you updated from first call to final box.</p><h2>What is included</h2><ul class="checks">'+s.inc.concat(COMMON).map(function(t){return '<li><i>'+ic('check')+'</i>'+t+'</li>'}).join('')+'</ul><h2>How it works</h2>'+steps()+'</div><div class="side">'+quoteForm('s','Quote for '+s.t,'Free estimate, no obligation.')+'<div class="cc"><div class="ic">'+ic('phone')+'</div><h3>Prefer to talk?</h3><p>Call 800-0000 or 0500 000 001.</p></div></div></div></section>'
+  +'<section class="alt"><div class="wrap"><div class="head"><span class="eyebrow">Related</span><h2>Other services you may need.</h2></div><div class="svc-grid" style="grid-template-columns:repeat(3,minmax(0,1fr))">'+rel.map(svcCard).join('')+'</div></div></section>';
+}
+PAGES.shop=function(){
+  return banner('Packing supplies shop','Boxes, tape and protection used by our crews. Free delivery in the UAE on orders over AED 200.',' / Shop','boxes')
+  +'<section><div class="wrap"><div class="toolbar"><div class="chips" id="chips">'+['All','Boxes','Tapes & Wrap','Protection','Kits'].map(function(c,i){return '<button class="chip" data-cat="'+c+'" aria-pressed="'+(i===0)+'">'+c+'</button>'}).join('')+'</div><label for="sort" style="flex-direction:row;align-items:center;gap:10px">Sort<select id="sort"><option value="feat">Featured</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option></select></label></div><div class="shop-grid" id="shopGrid"></div></div></section>'+cta();
+};
+function shopGrid(){
+  var cat=($('#chips [aria-pressed="true"]')||{dataset:{cat:'All'}}).dataset.cat,sort=$('#sort').value;
+  var list=PR.filter(function(p){return cat==='All'||p.c===cat});
+  if(sort==='lo')list.sort(function(a,b){return a.p-b.p});if(sort==='hi')list.sort(function(a,b){return b.p-a.p});
+  $('#shopGrid').innerHTML=list.map(prodCard).join('');
+}
+function productDetail(id){
+  var p=prod(id);if(!p)return notFound();
+  var rel=PR.filter(function(x){return x.c===p.c&&x.id!==p.id}).concat(PR.filter(function(x){return x.c!==p.c})).slice(0,4);
+  return banner(p.t,'',' / <a href="#shop">Shop</a> / '+p.c,p.k)
+  +'<section><div class="wrap pd"><div class="pic">'+art(p.k,p.t)+'</div><div class="info"><span class="eyebrow">'+p.c+'</span><h1>'+p.t+'</h1><div class="price">'+aed(p.p)+' <small>incl. VAT shown at checkout</small></div><p style="color:var(--muted);font-size:17px">'+p.d+'</p><div class="buyrow"><div class="qty"><button data-q="-1" aria-label="Decrease quantity">−</button><span id="pq">1</span><button data-q="1" aria-label="Increase quantity">+</button></div><button class="btn" data-addq="'+p.id+'">Add to cart</button><a class="btn ghost" href="#cart">View cart</a></div><div class="specs">'+p.s.map(function(r){return '<div><span>'+r[0]+'</span><b>'+r[1]+'</b></div>'}).join('')+'<div><span>Delivery</span><b>Free over AED 200</b></div></div></div></div></section>'
+  +'<section class="alt"><div class="wrap"><div class="head"><span class="eyebrow">You may also need</span><h2>Complete your packing list.</h2></div><div class="shop-grid">'+rel.map(prodCard).join('')+'</div></div></section>';
+}
+PAGES.cart=function(){
+  var body;
+  if(!cart.length){body='<div class="empty"><div style="width:220px;aspect-ratio:1/.8;border-radius:16px;overflow:hidden;border:1px solid var(--line)">'+art('boxes','Empty boxes')+'</div><h2>Your cart is empty</h2><p>Add boxes, tape or a full moving kit to get started.</p><a class="btn" href="#shop">Browse the shop</a></div>'}
+  else{var t=totals();body='<div class="cart-wrap"><div>'+cart.map(function(c){var p=prod(c.id);return '<div class="line-item"><div class="th">'+art(p.k,p.t)+'</div><div><h3><a href="#product-'+p.id+'">'+p.t+'</a></h3><div style="color:var(--muted);font-size:14px">'+aed(p.p)+' each</div><button class="rm" data-rm="'+p.id+'">Remove</button></div><div class="r"><div class="qty"><button data-cq="'+p.id+'|-1" aria-label="Decrease">−</button><span>'+c.q+'</span><button data-cq="'+p.id+'|1" aria-label="Increase">+</button></div><b>'+aed(p.p*c.q)+'</b></div></div>'}).join('')+'<a class="btn ghost sm" href="#shop">Continue shopping</a></div>'+summary(t,true)+'</div>'}
+  return banner('Your cart','',' / Cart','boxes')+'<section><div class="wrap">'+body+'</div></section>';
+};
+function summary(t,go){return '<aside class="summary"><h2>Order summary</h2><div class="ln"><span>Subtotal</span><span>'+aed(t.sub)+'</span></div><div class="ln"><span>Delivery</span><span>'+(t.ship?aed(t.ship):'Free')+'</span></div><div class="ln"><span>VAT (5%)</span><span>'+aed(t.vat)+'</span></div><div class="ln tot"><span>Total</span><span>'+aed(t.total)+'</span></div>'+(t.sub<200?'<p style="font-size:13.5px;color:var(--muted)">Add '+aed(200-t.sub)+' more for free delivery.</p>':'')+(go?'<a class="btn" href="#checkout">Proceed to checkout</a>':'')+'</aside>'}
+PAGES.checkout=function(){
+  if(!cart.length)return PAGES.cart();
+  var t=totals();
+  return banner('Checkout','',' / <a href="#cart">Cart</a> / Checkout','boxes')+'<section><div class="wrap"><div class="cart-wrap"><form class="fcard" data-form="checkout" novalidate><h2>Delivery details</h2><div class="row2"><label for="cn">Full name<input id="cn" required></label><label for="cp">Phone<input id="cp" type="tel" required></label></div><label for="ce">Email<input id="ce" type="email"></label><div class="row2"><label for="cem">Emirate<select id="cem">'+emOpts(0)+'</select></label><label for="ca">Address<input id="ca" placeholder="Building, street, area" required></label></div><h2 style="margin-top:8px">Payment</h2><div class="pay"><label><input type="radio" name="pay" checked> Cash on delivery</label><label><input type="radio" name="pay"> Card (demo, no payment taken)</label></div><button class="btn" type="submit">Place order</button><div class="ok" role="status"></div></form>'+summary(t,false)+'</div></div></section>';
+};
+PAGES["order-done"]=function(){
+  var n='PM-'+(100000+Math.floor(Math.random()*899999));
+  return banner('Thank you','Your order has been placed.',' / Order confirmed','truck')+'<section><div class="wrap"><div class="empty"><div style="width:260px;aspect-ratio:1/.8;border-radius:16px;overflow:hidden;border:1px solid var(--line)">'+art('kit','Packing kit')+'</div><h2>Order '+n+' confirmed</h2><p>We will call you to confirm delivery. This is a demo, so no payment or order was actually sent.</p><div class="buyrow" style="justify-content:center"><a class="btn" href="#shop">Keep shopping</a><a class="btn ghost" href="#home">Back to home</a></div></div></div></section>';
+};
+PAGES.blogs=function(){return banner('Latest news','Moving advice, packing tips and company updates from our crews.',' / Blogs','truck')+'<section><div class="wrap"><div class="blog-grid">'+BL.map(blogCard).join('')+'</div></div></section>'+cta()};
+function postPage(i){
+  var b=BL[i-1];if(!b)return notFound();
+  return banner(b.t,b.d,' / <a href="#blogs">Blogs</a> / Article',b.k)+'<section><div class="wrap"><article class="article"><div class="thumb" style="aspect-ratio:16/8">'+art(b.k,b.t)+'</div>'+b.b.map(function(p){return '<p>'+p+'</p>'}).join('')+'<a class="btn ghost sm" href="#blogs" style="align-self:flex-start">← All articles</a></article></div></section>'+cta();
+}
+PAGES["contact-us"]=function(){
+  return banner('Contact us','Tell us about your move. A coordinator replies within the hour.',' / Contact us','truck')
+  +'<section><div class="wrap"><div class="contact-cards"><div class="cc"><div class="ic">'+ic('phone')+'</div><h3>Phone</h3><p>0500 000 001<br>0500 000 002<br>Toll free 800-0000</p></div><div class="cc"><div class="ic">'+ic('mail')+'</div><h3>Email</h3><p>sales@primemovers.demo</p></div><div class="cc"><div class="ic">'+ic('pin')+'</div><h3>Location</h3><p>Dubai &amp; Sharjah, U.A.E<br>Open daily, 8am to 10pm</p></div></div><div class="detail"><div class="main">'+quoteForm('c','Request a free quote','Share a few details and we will send an itemised estimate.')+'</div><div class="side"><div class="visual" style="aspect-ratio:1/.9">'+art('office','Prime Movers office')+'</div></div></div></div></section>';
+};
+PAGES["privacy-policy"]=function(){return banner('Privacy policy','How we handle your information.',' / Privacy policy','office')+'<section><div class="wrap legal"><p>This is sample text for the demo site. Replace it with your own policy before launch.</p><h2>Information we collect</h2><p>We collect the details you enter in our quote, contact and checkout forms, such as name, phone, email and address, so we can provide estimates and deliver orders.</p><h2>How we use it</h2><p>We use your details to respond to requests, plan moves, process orders and improve service. We do not sell your personal data.</p><h2>Your choices</h2><p>You can ask us to update or delete your details at any time by contacting sales@primemovers.demo.</p></div></section>'};
+PAGES.terms=function(){return banner('Terms & conditions','The basics of working with us.',' / Terms','office')+'<section><div class="wrap legal"><p>This is sample text for the demo site. Replace it with your own terms before launch.</p><h2>Quotes and bookings</h2><p>Quotes are estimates based on the inventory and access details provided. Final pricing may change if the scope changes on the day.</p><h2>Handling and liability</h2><p>Our crews handle all items with care. Claims must be reported within 48 hours of delivery with photos.</p><h2>Shop orders</h2><p>Packing supplies ship within 1 to 2 working days in the UAE. Unused items can be returned within 7 days.</p></div></section>'};
+function notFound(){return banner('Page not found','The page you are looking for has moved or does not exist.',' / 404','truck')+'<section><div class="wrap"><div class="empty"><h2>Let us get you back on the road</h2><a class="btn" href="#home">Go home</a></div></div></section>'}
+
+/* ---------- router ---------- */
+var app=$('#app');
+function render(){
+  var h=(location.hash||'#home').slice(1)||'home',html;
+  if(h.indexOf('service-')===0)html=serviceDetail(h.slice(8));
+  else if(h.indexOf('product-')===0)html=productDetail(h.slice(8));
+  else if(h.indexOf('post-')===0)html=postPage(+h.slice(5));
+  else if(PAGES[h])html=PAGES[h]();
+  else html=notFound();
+  app.innerHTML=html;
+  var base=h.split('-')[0];
+  $$('[data-nav]').forEach(function(a){var n=a.dataset.nav;a.classList.toggle('on',n===h||(n==='shop'&&(base==='product'||h==='cart'||h==='checkout'))||(n==='blogs'&&base==='post'))});
+  $('#links').classList.remove('open');$('#mega').classList.remove('open');$('#svcBtn').setAttribute('aria-expanded','false');$('#burger').setAttribute('aria-expanded','false');
+  if(h==='shop')shopGrid();
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',render);
+
+/* ---------- chrome ---------- */
+var truckSvg='<svg class="i" viewBox="0 0 24 24"><path d="M2 6h12v10H2zM14 9h4l4 4v3h-8"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>';
+$('#logoI').innerHTML=truckSvg;$('#logoF').innerHTML=truckSvg;
+$('#cartI').innerHTML=ic('cart');$('#burgI').innerHTML=ic('menu');$('#chev').innerHTML=ic('down','width:14px;height:14px;vertical-align:-2px');
+$('#footSky').innerHTML=footScene();
+SV.forEach(function(s,i){
+  $('#megaGrid').insertAdjacentHTML('beforeend','<a href="#service-'+s.id+'">'+ic(s.ic)+s.t+'</a>');
+  if(i<6)$('#footSvc').insertAdjacentHTML('beforeend','<li><a href="#service-'+s.id+'">'+s.t+'</a></li>');
+});
+$('#burger').onclick=function(){var o=$('#links').classList.toggle('open');this.setAttribute('aria-expanded',o)};
+$('#svcBtn').onclick=function(){var o=$('#mega').classList.toggle('open');this.setAttribute('aria-expanded',o)};
+
+var modes=[["light","M12 17a5 5 0 100-10 5 5 0 000 10M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"],["dark","M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8"],["system","M3 4h18v12H3zM8 20h8M12 16v4"]];
+function getM(){try{return localStorage.getItem('pm-theme')||'system'}catch(e){return 'system'}}
+function setM(m){var r=document.documentElement;if(m==='system')r.removeAttribute('data-theme');else r.setAttribute('data-theme',m);try{localStorage.setItem('pm-theme',m)}catch(e){}$$('[data-theme-switch] button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.m===m)})}
+$$('[data-theme-switch]').forEach(function(box){modes.forEach(function(m){var b=document.createElement('button');b.type='button';b.dataset.m=m[0];b.title=m[0][0].toUpperCase()+m[0].slice(1)+' theme';b.setAttribute('aria-label',m[0]+' theme');b.innerHTML='<svg class="i" viewBox="0 0 24 24"><path d="'+m[1]+'"/></svg>';b.onclick=function(){setM(m[0])};box.appendChild(b)})});
+setM(getM());
+
+/* ---------- delegated events ---------- */
+var pq=1;
+document.addEventListener('click',function(e){
+  var t=e.target.closest('button,a');if(!t)return;
+  if(t.dataset.add){addCart(t.dataset.add,1);t.textContent='Added ✓';setTimeout(function(){t.textContent='Add to cart'},1200)}
+  else if(t.dataset.addq){addCart(t.dataset.addq,pq);t.textContent='Added ✓';setTimeout(function(){t.textContent='Add to cart'},1200)}
+  else if(t.dataset.q){pq=Math.max(1,pq+ +t.dataset.q);$('#pq').textContent=pq}
+  else if(t.dataset.cq){var a=t.dataset.cq.split('|'),l=cart.filter(function(c){return c.id===+a[0]})[0];if(l){l.q=Math.max(1,l.q+ +a[1]);saveCart();render()}}
+  else if(t.dataset.rm){cart=cart.filter(function(c){return c.id!==+t.dataset.rm});saveCart();render()}
+  else if(t.dataset.cat){$$('#chips .chip').forEach(function(c){c.setAttribute('aria-pressed',c===t)});shopGrid()}
+  else if(t.dataset.em){$$('#pills .pill').forEach(function(c){c.setAttribute('aria-pressed',c===t)});$('#mapT').textContent=t.dataset.em;$('#mapP').textContent=COV[t.dataset.em]}
+  else if(t.dataset.scroll){var el=$(t.dataset.scroll);if(el)el.scrollIntoView({behavior:'smooth',block:'center'})}
+  else if(t.id==='prev'||t.id==='next'){var tr=$('#track');tr.scrollBy({left:(t.id==='prev'?-1:1)*(tr.firstElementChild.offsetWidth+16),behavior:'smooth'})}
+  else if(t.tagName==='A'&&t.getAttribute('href')==='#'+(location.hash||'#home').slice(1)){window.scrollTo(0,0)}
+});
+document.addEventListener('change',function(e){if(e.target.id==='sort')shopGrid()});
+document.addEventListener('submit',function(e){
+  var f=e.target;if(!f.dataset.form)return;e.preventDefault();
+  var req=$$('input[required]',f),bad=null;
+  req.forEach(function(i){var no=!i.value.trim();i.classList.toggle('bad',no);if(no&&!bad)bad=i});
+  if(bad){bad.focus();return}
+  var ok=$('.ok',f);
+  if(f.dataset.form==='checkout'){cart=[];saveCart();location.hash='#order-done';return}
+  ok.classList.add('show');
+});
+saveCart();render();
+})();
+</script>
+</body>
+</html>
