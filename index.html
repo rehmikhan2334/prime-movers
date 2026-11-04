@@ -94,12 +94,19 @@ header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;backgroun
   .mobile-theme{display:flex;justify-content:space-between;align-items:center;padding:12px;font-size:14px;color:var(--muted)}
   .mega-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+@media (hover:hover) and (min-width:1041px){
+  .nav:has(#svcBtn:hover) #mega,.nav:has(#svcBtn:focus-visible) #mega,.nav:has(#mega:hover) #mega,.nav:has(#mega:focus-within) #mega{display:block}
+}
 @media (max-width:520px){.mega-grid{grid-template-columns:1fr}.topbar .c span:nth-child(n+3){display:none}}
 
 /* hero + page banners */
 .hero{background:var(--hero);color:var(--hero-fg);position:relative;overflow:hidden}
-.hero .scene{position:absolute;inset:0;opacity:1}
-.hero .scene svg{width:100%;height:100%;display:block}
+.hero .scene{position:absolute;inset:0;opacity:1;z-index:0}
+.hero .scene:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,20,41,.9) 0%,rgba(8,20,41,.68) 50%,rgba(8,20,41,.45) 100%)}
+.hero .scene svg{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:.28;z-index:1}
+.hero .scene .hero-slides{position:absolute;inset:0}
+.hero .scene img.hero-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.045);transition:opacity .8s,transform 6s}
+.hero .scene img.hero-slide.active{opacity:.52;transform:scale(1)}
 .hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;padding-block:72px 150px;align-items:start}
 .hero-copy{display:flex;flex-direction:column;gap:22px;align-items:flex-start}
 .hero h1{font-size:clamp(42px,6.4vw,84px);font-weight:800}
@@ -107,6 +114,14 @@ header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;backgroun
 .hero .lead{font-size:18px;color:var(--hero-muted);max-width:50ch}
 .hero .tag{font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-pager{display:flex;align-items:center;gap:9px;margin-top:2px}
+.hero-pager button{width:30px;height:30px;padding:0;border:1px solid rgba(255,255,255,.55);border-radius:50%;background:rgba(15,36,71,.45);color:#fff;display:grid;place-items:center}
+.hero-pager button[aria-pressed="true"]{width:34px;height:10px;border:0;border-radius:99px;background:var(--accent)}
+.hero-pager button svg{width:15px;height:15px}
+.hero-location{display:inline-flex;align-items:center;gap:8px;color:var(--hero-muted);font-size:14px}
+.hero-location svg{color:var(--accent)}
+.map-link{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-weight:600}
+.map-link:hover{text-decoration:underline;text-underline-offset:4px}
 .quote{background:var(--surface);color:var(--fg);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:14px;min-width:0;box-shadow:0 24px 60px rgba(0,0,0,.35)}
 .quote h2{font-size:26px}
 .quote .note{font-size:14px;color:var(--muted)}
@@ -485,8 +500,37 @@ studio:function(){return bx(60,140,100,80)+bx(170,150,110,70)+bx(100,92,80,48)+'
 };
 SC.crew=SC.boxes;
 var IMG_DIR="images/";
+var IMAGE_URLS={
+  truck:"https://images.pexels.com/photos/4498182/pexels-photo-4498182.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  boxes:"https://images.pexels.com/photos/4246119/pexels-photo-4246119.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  house:"https://images.unsplash.com/photo-1560185008-b033106af5c3?auto=format&fit=crop&w=1200&q=80",
+  office:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
+  corp:"https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80",
+  staff:"https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=1200&q=80",
+  warehouse:"https://images.pexels.com/photos/6169056/pexels-photo-6169056.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  it:"https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
+  piano:"https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?auto=format&fit=crop&w=1200&q=80",
+  art:"https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=1200&q=80",
+  sofa:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80",
+  pool:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80",
+  cue:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80",
+  hotel:"https://images.unsplash.com/photo-1560185008-b033106af5c3?auto=format&fit=crop&w=1200&q=80",
+  retail:"https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80",
+  tape:"https://images.pexels.com/photos/4246119/pexels-photo-4246119.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  bubble:"https://images.pexels.com/photos/4498182/pexels-photo-4498182.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  wrap:"https://images.pexels.com/photos/4498182/pexels-photo-4498182.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  blanket:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80",
+  mattress:"https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80",
+  wardrobe:"https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=1200&q=80",
+  kit:"https://images.pexels.com/photos/4246119/pexels-photo-4246119.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  studio:"https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=1200&q=80",
+  marker:"https://images.pexels.com/photos/4246119/pexels-photo-4246119.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  corner:"https://images.pexels.com/photos/4246119/pexels-photo-4246119.jpeg?auto=compress&cs=tinysrgb&w=1200"
+};
+function imageUrl(k){return IMAGE_URLS[k]||IMAGE_URLS.truck}
+function heroSlides(){return '<div class="hero-slides">'+['truck','house','boxes'].map(function(k,i){return '<img class="hero-slide'+(i===0?' active':'')+'" data-hero-slide="'+i+'" src="'+imageUrl(k)+'" alt=""'+(i?' loading="lazy"':'')+'>'}).join('')+'</div>'}
 function avatar(id,ini){return '<div class="av">'+ini+'<img class="photo" src="'+IMG_DIR+id+'.jpg" alt="" loading="lazy" onerror="this.remove()"></div>'}
-function photo(k,label){return '<img class="photo" src="'+IMG_DIR+k+'.jpg" alt="'+esc(label||k)+'" loading="lazy" onerror="this.remove()">'}
+function photo(k,label){return '<img class="photo" src="'+imageUrl(k)+'" alt="'+esc(label||k)+'" loading="lazy" onerror="this.remove()">'}
 function art(k,label){return '<span class="pw">'+artSvg(k,label)+photo(k,label)+'</span>'}
 function artSvg(k,label){return '<svg class="art" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" role="img" aria-label="'+esc(label||k)+'"><rect width="400" height="260" fill="var(--sky)"/><circle cx="336" cy="52" r="26" fill="var(--a2)" opacity=".85"/><rect y="225" width="400" height="35" fill="var(--a1)" opacity=".14"/>'+(SC[k]||SC.boxes)()+'</svg>'}
 function rnd(i){var x=Math.sin(i*127.1+311.7)*43758.5453;return x-Math.floor(x)}
@@ -566,7 +610,7 @@ function addCart(id,q){var l=cart.filter(function(c){return c.id===+id})[0];if(l
 function totals(){var sub=cart.reduce(function(a,c){return a+prod(c.id).p*c.q},0);var ship=sub===0?0:(sub>=200?0:25);var vat=Math.round(sub*0.05*100)/100;return{sub:sub,ship:ship,vat:vat,total:sub+ship+vat}}
 
 /* ---------- shared fragments ---------- */
-function banner(title,lead,crumbs,k){return '<div class="banner"><div class="scene">'+bannerScene(k)+'<img class="bgphoto" src="'+IMG_DIR+'banner.jpg" alt="" onerror="this.remove()"></div><div class="wrap"><div class="crumb"><a href="#home">Home</a>'+crumbs+'</div><h1>'+title+'</h1>'+(lead?'<p>'+lead+'</p>':'')+'</div></div>'}
+function banner(title,lead,crumbs,k){return '<div class="banner"><div class="scene">'+bannerScene(k)+photo(k,title)+'</div><div class="wrap"><div class="crumb"><a href="#home">Home</a>'+crumbs+'</div><h1>'+title+'</h1>'+(lead?'<p>'+lead+'</p>':'')+'</div></div>'}
 function emOpts(sel){return EM.map(function(e,i){return '<option'+(i===sel?' selected':'')+'>'+e+'</option>'}).join('')}
 function quoteForm(pre,heading,note){return '<form class="quote" data-form="quote" novalidate><h2>'+heading+'</h2><p class="note">'+note+'</p><div class="row2"><label for="'+pre+'n">Name<input id="'+pre+'n" type="text" placeholder="Full name" required></label><label for="'+pre+'p">Phone<input id="'+pre+'p" type="tel" placeholder="05X XXX XXXX" required></label></div><div class="row2"><label for="'+pre+'e">Email<input id="'+pre+'e" type="email" placeholder="you@email.com"></label><label for="'+pre+'d">Moving date<input id="'+pre+'d" type="date"></label></div><div class="row2"><label for="'+pre+'f">Moving from<select id="'+pre+'f">'+emOpts(0)+'</select></label><label for="'+pre+'t">Moving to<select id="'+pre+'t">'+emOpts(1)+'</select></label></div><label for="'+pre+'m">Message<textarea id="'+pre+'m" placeholder="2-bedroom apartment, 3rd floor, piano on site…"></textarea></label><button class="btn" type="submit">Request my quote</button><div class="ok" role="status">Thanks. Your quote request is in. This is a demo form, nothing is sent.</div></form>'}
 function svcCard(s){return '<a class="svc" href="#service-'+s.id+'"><div class="img">'+art(s.k,s.t)+'</div><div class="b"><h3>'+s.t+'</h3><p>'+s.d+'</p><span class="more">Learn more →</span></div></a>'}
@@ -578,12 +622,12 @@ function revs(){return '<div class="track" id="track">'+RV.map(function(r,i){ret
 function steps(){return '<div class="steps">'+STEPS.map(function(s,i){return '<div class="step"><span class="n">Step '+(i+1)+'</span><h3>'+s[0]+'</h3><p>'+s[1]+'</p></div>'}).join('')+'</div>'}
 function faq(){return FAQ.map(function(q,i){return '<details'+(i===0?' open':'')+'><summary>'+q[0]+'<i>'+ic('plus','width:16px;height:16px')+'</i></summary><p>'+q[1]+'</p></details>'}).join('')}
 function why(){var W=[["users","Experienced professionals","Seasoned crew leaders bring skill and calm to every project."],["tag","Affordable pricing","Clear, itemised quotes with no hidden costs on moving day."],["clock","Quick and efficient","Fast, organised execution so you are settled sooner."],["box","Secure packing","Quality materials and proven techniques keep belongings intact."],["shield","Insured handling","Every move is covered, from fragile glass to heavy appliances."],["headset","Dedicated support","A real person answers your questions at every step."]];return '<div class="grid3">'+W.map(function(f){return '<div class="feat"><div class="ic">'+ic(f[0])+'</div><h3>'+f[1]+'</h3><p>'+f[2]+'</p></div>'}).join('')+'</div>'}
-function coverage(){return '<section class="cover"><div class="wrap"><div><div class="head"><span class="eyebrow">Coverage</span><h2>We cover the whole United Arab Emirates.</h2><p>Pick an emirate to see how we serve it.</p></div><div class="pills" id="pills">'+EM.map(function(e,i){return '<button type="button" class="pill" data-em="'+e+'" aria-pressed="'+(i===0)+'">'+e+'</button>'}).join('')+'</div></div><div class="map"><h3 id="mapT">Dubai</h3><p id="mapP">'+COV.Dubai+'</p><div class="bar"><div><b>10+ yrs</b><span>Fulfilling UAE moving needs</span></div><div><b>25,000+</b><span>Moves expertly handled</span></div></div></div></div></section>'}
+function coverage(){return '<section class="cover" id="coverage"><div class="wrap"><div><div class="head"><span class="eyebrow">Coverage</span><h2>We cover the whole United Arab Emirates.</h2><p>Choose your emirate to see local coverage and map details.</p></div><div class="pills" id="pills">'+EM.map(function(e,i){return '<button type="button" class="pill" data-em="'+e+'" aria-pressed="'+(i===0)+'">'+e+'</button>'}).join('')+'</div></div><div class="map"><h3 id="mapT">Dubai</h3><p id="mapP">'+COV.Dubai+'</p><a id="mapLink" class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Dubai%2C%20UAE" target="_blank" rel="noopener">'+ic('pin')+' View Dubai on Google Maps</a><div class="bar"><div><b>10+ yrs</b><span>Fulfilling UAE moving needs</span></div><div><b>25,000+</b><span>Moves expertly handled</span></div></div></div></div></section>'}
 
 /* ---------- pages ---------- */
 var PAGES={};
 PAGES.home=function(){
-  return '<div class="hero"><div class="scene">'+heroScene()+'<img class="bgphoto" src="'+IMG_DIR+'hero.jpg" alt="" onerror="this.remove()"></div><div class="wrap"><div class="hero-copy"><span class="tag">Movers &amp; Packers · Dubai · Sharjah · Ajman</span><h1>Stress-free moves, <em>made simple.</em></h1><p class="lead">From apartments and villas to offices and warehouses, our trained and insured crews pack, move and set up everything. Need supplies? Shop boxes, tape and protection online.</p><div class="hero-actions"><button class="btn" data-scroll="#hq">Book your move '+ic('right','width:18px;height:18px')+'</button><a class="btn onhero" href="#shop">Shop packing supplies</a></div></div><div id="hq">'+quoteForm('h','Get a free quote','Tell us about your move. We reply within the hour.')+'</div></div></div>'
+  return '<div class="hero"><div class="scene">'+heroSlides()+heroScene()+'</div><div class="wrap"><div class="hero-copy"><span class="tag">Movers &amp; Packers · Dubai · Sharjah · Ajman</span><h1>Stress-free moves, <em>made simple.</em></h1><p class="lead">From apartments and villas to offices and warehouses, our trained and insured crews pack, move and set up everything. Need supplies? Shop boxes, tape and protection online.</p><div class="hero-actions"><button class="btn" data-scroll="#hq">Book your move '+ic('right','width:18px;height:18px')+'</button><a class="btn onhero" href="#shop">Shop packing supplies</a></div><div class="hero-pager" aria-label="Hero image slider">'+[0,1,2].map(function(i){return '<button type="button" data-slide="'+i+'" aria-label="Show slide '+(i+1)+'" aria-pressed="'+(i===0)+'"></button>'}).join('')+'</div><a class="hero-location" href="#coverage">'+ic('pin')+' Serving Dubai, Sharjah, Ajman &amp; all UAE emirates</a></div><div id="hq">'+quoteForm('h','Get a free quote','Tell us about your move. We reply within the hour.')+'</div></div></div>'
   +'<div class="stats"><div class="wrap"><div class="stat"><b>10+</b><span>Years moving the UAE</span></div><div class="stat"><b>5,000+</b><span>Happy customers</span></div><div class="stat"><b>25,000+</b><span>Moves completed</span></div><div class="stat"><b>4.6 / 5</b><span>Rating from 657 Google reviews</span></div></div></div>'
   +'<section><div class="wrap split"><div class="visual">'+art('truck','Moving truck loaded with boxes')+'<div class="badge"><b>10+</b><span>years of experience</span></div></div><div class="copy"><span class="eyebrow">Who we are</span><h2>Professional movers and packers for over a decade.</h2><p>We have helped more than 5,000 customers move homes, offices and businesses across Dubai, Sharjah and Ajman. Our trained, insured crews have completed over 25,000 moves, from a studio flat to a full corporate relocation.</p><ul class="checks">'+['Trained and fully insured crews','Free on-site or photo-based estimates','Same-day packing and set-up available'].map(function(t){return '<li><i>'+ic('check')+'</i>'+t+'</li>'}).join('')+'</ul><a class="btn ghost" href="#about-us">About us</a></div></div></section>'
   +'<section class="alt"><div class="wrap"><div class="head"><span class="eyebrow">Why choose us</span><h2>Unpack your dreams, not your stress.</h2></div>'+why()+'</div></section>'
@@ -653,7 +697,7 @@ function postPage(i){
 }
 PAGES["contact-us"]=function(){
   return banner('Contact us','Tell us about your move. A coordinator replies within the hour.',' / Contact us','truck')
-  +'<section><div class="wrap"><div class="contact-cards"><div class="cc"><div class="ic">'+ic('phone')+'</div><h3>Phone</h3><p>0500 000 001<br>0500 000 002<br>Toll free 800-0000</p></div><div class="cc"><div class="ic">'+ic('mail')+'</div><h3>Email</h3><p>sales@primemovers.demo</p></div><div class="cc"><div class="ic">'+ic('pin')+'</div><h3>Location</h3><p>Dubai &amp; Sharjah, U.A.E<br>Open daily, 8am to 10pm</p></div></div><div class="detail"><div class="main">'+quoteForm('c','Request a free quote','Share a few details and we will send an itemised estimate.')+'</div><div class="side"><div class="visual" style="aspect-ratio:1/.9">'+art('office','Prime Movers office')+'</div></div></div></div></section>';
+  +'<section><div class="wrap"><div class="contact-cards"><div class="cc"><div class="ic">'+ic('phone')+'</div><h3>Phone</h3><p>0500 000 001<br>0500 000 002<br>Toll free 800-0000</p></div><div class="cc"><div class="ic">'+ic('mail')+'</div><h3>Email</h3><p>sales@primemovers.demo</p></div><div class="cc"><div class="ic">'+ic('pin')+'</div><h3>Location</h3><p><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Dubai%20and%20Sharjah%2C%20UAE" target="_blank" rel="noopener">Dubai &amp; Sharjah, U.A.E '+ic('right','width:16px;height:16px')+'</a><br>Open daily, 8am to 10pm</p></div></div><div class="detail"><div class="main">'+quoteForm('c','Request a free quote','Share a few details and we will send an itemised estimate.')+'</div><div class="side"><div class="visual" style="aspect-ratio:1/.9">'+art('office','Prime Movers office')+'</div></div></div></div></section>';
 };
 PAGES["privacy-policy"]=function(){return banner('Privacy policy','How we handle your information.',' / Privacy policy','office')+'<section><div class="wrap legal"><p>This is sample text for the demo site. Replace it with your own policy before launch.</p><h2>Information we collect</h2><p>We collect the details you enter in our quote, contact and checkout forms, such as name, phone, email and address, so we can provide estimates and deliver orders.</p><h2>How we use it</h2><p>We use your details to respond to requests, plan moves, process orders and improve service. We do not sell your personal data.</p><h2>Your choices</h2><p>You can ask us to update or delete your details at any time by contacting sales@primemovers.demo.</p></div></section>'};
 PAGES.terms=function(){return banner('Terms & conditions','The basics of working with us.',' / Terms','office')+'<section><div class="wrap legal"><p>This is sample text for the demo site. Replace it with your own terms before launch.</p><h2>Quotes and bookings</h2><p>Quotes are estimates based on the inventory and access details provided. Final pricing may change if the scope changes on the day.</p><h2>Handling and liability</h2><p>Our crews handle all items with care. Claims must be reported within 48 hours of delivery with photos.</p><h2>Shop orders</h2><p>Packing supplies ship within 1 to 2 working days in the UAE. Unused items can be returned within 7 days.</p></div></section>'};
@@ -661,6 +705,21 @@ function notFound(){return banner('Page not found','The page you are looking for
 
 /* ---------- router ---------- */
 var app=$('#app');
+var heroTimer=null,heroSlideIndex=0;
+function showHeroSlide(index){
+  var slides=$$('[data-hero-slide]'),buttons=$$('.hero-pager [data-slide]');
+  if(!slides.length)return;
+  heroSlideIndex=(index+slides.length)%slides.length;
+  slides.forEach(function(slide,i){slide.classList.toggle('active',i===heroSlideIndex)});
+  buttons.forEach(function(button,i){button.setAttribute('aria-pressed',i===heroSlideIndex)});
+}
+function startHeroSlider(){
+  if(heroTimer)clearInterval(heroTimer);
+  heroSlideIndex=0;
+  showHeroSlide(heroSlideIndex);
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  heroTimer=setInterval(function(){showHeroSlide(heroSlideIndex+1)},6000);
+}
 function render(){
   var h=(location.hash||'#home').slice(1)||'home',html;
   if(h.indexOf('service-')===0)html=serviceDetail(h.slice(8));
@@ -673,6 +732,8 @@ function render(){
   $$('[data-nav]').forEach(function(a){var n=a.dataset.nav;a.classList.toggle('on',n===h||(n==='shop'&&(base==='product'||h==='cart'||h==='checkout'))||(n==='blogs'&&base==='post'))});
   $('#links').classList.remove('open');$('#mega').classList.remove('open');$('#svcBtn').setAttribute('aria-expanded','false');$('#burger').setAttribute('aria-expanded','false');
   if(h==='shop')shopGrid();
+  if(heroTimer){clearInterval(heroTimer);heroTimer=null}
+  if(h==='home')startHeroSlider();
   window.scrollTo(0,0);
 }
 window.addEventListener('hashchange',render);
@@ -699,13 +760,14 @@ setM(getM());
 var pq=1;
 document.addEventListener('click',function(e){
   var t=e.target.closest('button,a');if(!t)return;
-  if(t.dataset.add){addCart(t.dataset.add,1);t.textContent='Added ✓';setTimeout(function(){t.textContent='Add to cart'},1200)}
+  if(t.dataset.slide!==undefined){showHeroSlide(+t.dataset.slide);if(heroTimer){clearInterval(heroTimer);heroTimer=setInterval(function(){showHeroSlide(heroSlideIndex+1)},6000)}}
+  else if(t.dataset.add){addCart(t.dataset.add,1);t.textContent='Added ✓';setTimeout(function(){t.textContent='Add to cart'},1200)}
   else if(t.dataset.addq){addCart(t.dataset.addq,pq);t.textContent='Added ✓';setTimeout(function(){t.textContent='Add to cart'},1200)}
   else if(t.dataset.q){pq=Math.max(1,pq+ +t.dataset.q);$('#pq').textContent=pq}
   else if(t.dataset.cq){var a=t.dataset.cq.split('|'),l=cart.filter(function(c){return c.id===+a[0]})[0];if(l){l.q=Math.max(1,l.q+ +a[1]);saveCart();render()}}
   else if(t.dataset.rm){cart=cart.filter(function(c){return c.id!==+t.dataset.rm});saveCart();render()}
   else if(t.dataset.cat){$$('#chips .chip').forEach(function(c){c.setAttribute('aria-pressed',c===t)});shopGrid()}
-  else if(t.dataset.em){$$('#pills .pill').forEach(function(c){c.setAttribute('aria-pressed',c===t)});$('#mapT').textContent=t.dataset.em;$('#mapP').textContent=COV[t.dataset.em]}
+  else if(t.dataset.em){var emirate=t.dataset.em;$$('#pills .pill').forEach(function(c){c.setAttribute('aria-pressed',c===t)});$('#mapT').textContent=emirate;$('#mapP').textContent=COV[emirate];$('#mapLink').href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(emirate+', UAE');$('#mapLink').innerHTML=ic('pin')+' View '+emirate+' on Google Maps'}
   else if(t.dataset.scroll){var el=$(t.dataset.scroll);if(el)el.scrollIntoView({behavior:'smooth',block:'center'})}
   else if(t.id==='prev'||t.id==='next'){var tr=$('#track');tr.scrollBy({left:(t.id==='prev'?-1:1)*(tr.firstElementChild.offsetWidth+16),behavior:'smooth'})}
   else if(t.tagName==='A'&&t.getAttribute('href')==='#'+(location.hash||'#home').slice(1)){window.scrollTo(0,0)}
